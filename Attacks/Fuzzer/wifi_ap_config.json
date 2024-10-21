@@ -1,0 +1,18 @@
+{
+  "SSID": "TEST_KRA",
+  "Password": "testtest",
+  "Username": "matheus_garbelini",
+  "EAP": true,
+  "Channel": 9,
+  "MAC": "28:c6:3f:a8:af:c5",
+  "GatewayIP": "192.168.42.1",
+  "CustomDriverName": "RT2800USB",
+  "FuzzingInterface": "wlan1mon",
+  "ShareInternet": true,
+  "ShareInterface": "wlan0",
+  "SerialPortName": "/dev/ttyUSB*",
+  "SerialPortBaud": "115200",
+  "CrashDetectionWord": "WPA2 ENTERPRISE VERSION",
+  "EnableFuzzing": false,
+  "EnableDuplication": false
+}

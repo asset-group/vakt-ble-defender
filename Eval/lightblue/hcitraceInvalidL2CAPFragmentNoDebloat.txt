@@ -1,0 +1,370 @@
+Bluetooth monitor ver 5.52
+[0m= Note: Linux version 5.15.0-91-generic (x86_64)[0m                      [0;33m[0;33m 0.332680[0m
+[0m= Note: Bluetooth subsystem version 2.22[0m                              [0;33m[0;33m 0.332682[0m
+[0;32m= New Index: 00:16:A4:5C:35:81[0m (Primary,USB,hci0)              [0;33m[0;37m [hci0][0;33m 0.332683[0m
+[0;32m= Open Index: 00:16:A4:5C:35:81[0m                                [0;33m[0;37m [hci0][0;33m 0.332683[0m
+[0;32m= Index Info: 00:16:A4:5C:35:81[0m (Cambridge Silicon Radio)      [0;33m[0;37m [hci0][0;33m 0.332683[0m
+[1;32m@ MGMT Open: bluetoothd[0m (privileged) version 1.21            [0;33m[0;37m {0x0001}[0;33m 0.332684[0m
+[1;32m@ MGMT Open: btmon[0m (privileged) version 1.21                 [0;33m[0;37m {0x0002}[0;33m 0.332932[0m
+[0;34m< HCI Command: LE Set Advertising D..[0m (0x08|0x0008) plen 32 [0;33m[0;37m #1[0;37m [hci0][0;33m 1.921103[0m
+        [0m[0mLength: 0[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                 [0;33m[0;37m #2[0;37m [hci0][0;33m 1.932886[0m
+      [0;34mLE Set Advertising Data[0m (0x08|0x0008) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Scan Response..[0m (0x08|0x0009) plen 32 [0;33m[0;37m #3[0;37m [hci0][0;33m 1.932950[0m
+        [0m[0mLength: 0[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                 [0;33m[0;37m #4[0;37m [hci0][0;33m 1.934870[0m
+      [0;34mLE Set Scan Response Data[0m (0x08|0x0009) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertise Enable[0m (0x08|0x000a) plen 1 [0;33m[0;37m #5[0;37m [hci0][0;33m 1.934901[0m
+        [0m[0mAdvertising: Disabled (0x00)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                 [0;33m[0;37m #6[0;37m [hci0][0;33m 1.937843[0m
+      [0;34mLE Set Advertise Enable[0m (0x08|0x000a) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertising P..[0m (0x08|0x0006) plen 15 [0;33m[0;37m #7[0;37m [hci0][0;33m 1.937872[0m
+        [0m[0mMin advertising interval: 1280.000 msec (0x0800)[0m
+        [0m[0mMax advertising interval: 1280.000 msec (0x0800)[0m
+        [0m[0mType: Connectable undirected - ADV_IND (0x00)[0m
+        [0m[0mOwn address type: Public (0x00)[0m
+        [0m[0mDirect address type: Public (0x00)[0m
+        [0m[0mDirect address: 00:00:00:00:00:00 (OUI 00-00-00)[0m
+        [0m[0mChannel map: 37, 38, 39 (0x07)[0m
+        [0m[0mFilter policy: Allow Scan Request from Any, Allow Connect Request from Any (0x00)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                 [0;33m[0;37m #8[0;37m [hci0][0;33m 1.943851[0m
+      [0;34mLE Set Advertising Parameters[0m (0x08|0x0006) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertise Enable[0m (0x08|0x000a) plen 1 [0;33m[0;37m #9[0;37m [hci0][0;33m 1.943881[0m
+        [0m[0mAdvertising: Enabled (0x01)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #10[0;37m [hci0][0;33m 1.945847[0m
+      [0;34mLE Set Advertise Enable[0m (0x08|0x000a) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;35m> HCI Event: LE Meta Event[0m (0x3e) plen 19                  [0;33m[0;37m #11[0;37m [hci0][0;33m 3.345487[0m
+      [0;35mLE Connection Complete[0m (0x01)[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+        [0m[0mHandle: 69[0m
+        [0m[0mRole: Slave (0x01)[0m
+        [0m[0mPeer address type: Public (0x00)[0m
+        [0m[0mPeer address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mConnection interval: 20.00 msec (0x0010)[0m
+        [0m[0mConnection latency: 0 (0x0000)[0m
+        [0m[0mSupervision timeout: 500 msec (0x0032)[0m
+        [0m[0mMaster clock accuracy: 0x00[0m
+[1;35m@ MGMT Event: Device Connected[0m (0x000b) plen 13       [0;33m[0;37m {0x0002}[0;37m [hci0][0;33m 3.345571[0m
+        [0m[0mLE Address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mFlags: 0x00000000[0m
+        [0m[0mData length: 0[0m
+[1;35m@ MGMT Event: Device Connected[0m (0x000b) plen 13       [0;33m[0;37m {0x0001}[0;37m [hci0][0;33m 3.345571[0m
+        [0m[0mLE Address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mFlags: 0x00000000[0m
+        [0m[0mData length: 0[0m
+[0;36m< ACL Data TX: Handle 69[0m flags 0x00 dlen 16                [0;33m[0;37m #12[0;37m [hci0][0;33m 3.345656[0m
+      [0;34mLE L2CAP: Connection Parameter Update Request[0m (0x12) ident 1 len 8[0m
+        [0m[0mMin interval: 24[0m
+        [0m[0mMax interval: 40[0m
+        [0m[0mSlave latency: 0[0m
+        [0m[0mTimeout multiplier: 50[0m
+[1m= bluetoothd: No cache for 5D:36:AC:90:0B:22[0m                          [0;33m[0;33m 3.345982[0m
+[0;36m< ACL Data TX: Handle 69[0m flags 0x00 dlen 7                 [0;33m[0;37m #13[0;37m [hci0][0;33m 3.345945[0m
+      [0;34mATT: Exchange MTU Request[0m (0x02) len 2[0m
+        [0m[0mClient RX MTU: 517[0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5     [0;33m[0;37m #14[0;37m [hci0][0;33m 3.379019[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 69[0m
+        [0m[0mCount: 1[0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5     [0;33m[0;37m #15[0;37m [hci0][0;33m 3.399057[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 69[0m
+        [0m[0mCount: 1[0m
+[0;34m< HCI Command: LE Set Advertising...[0m (0x08|0x0008) plen 32 [0;33m[0;37m #16[0;37m [hci0][0;33m 3.937468[0m
+        [0m[0mLength: 24[0m
+        [0m[0m128-bit Service UUIDs (complete): 1 entry[0m
+        [0m[0m  Vendor specific (12634d89-d598-4874-8e86-7d042ee07ba7)[0m
+        [0m[0mCompany: internal use (65535)[0m
+        [0m[0m  Data: 7074[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #17[0;37m [hci0][0;33m 3.940738[0m
+      [0;34mLE Set Advertising Data[0m (0x08|0x0008) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Scan Respons..[0m (0x08|0x0009) plen 32 [0;33m[0;37m #18[0;37m [hci0][0;33m 3.940778[0m
+        [0m[0mLength: 9[0m
+        [0m[0mName (complete): Vivaldi[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #19[0;37m [hci0][0;33m 3.944998[0m
+      [0;34mLE Set Scan Response Data[0m (0x08|0x0009) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;36m> ACL Data RX: Handle 69[0m flags 0x02 dlen 7                 [0;33m[0;37m #20[0;37m [hci0][0;33m 4.138629[0m
+      [0;35mATT: Exchange MTU Request[0m (0x02) len 2[0m
+        [0m[0mClient RX MTU: 247[0m
+[0;36m< ACL Data TX: Handle 69[0m flags 0x00 dlen 7                 [0;33m[0;37m #21[0;37m [hci0][0;33m 4.138799[0m
+      [0;34mATT: Exchange MTU Response[0m (0x03) len 2[0m
+        [0m[0mServer RX MTU: 517[0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5     [0;33m[0;37m #22[0;37m [hci0][0;33m 4.179116[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 69[0m
+        [0m[0mCount: 1[0m
+[0;36m> ACL Data RX: Handle 69[0m flags 0x02 dlen 11                [0;33m[0;37m #23[0;37m [hci0][0;33m 4.298540[0m
+      [0;35mATT: Read By Group Type Request[0m (0x10) len 6[0m
+        [0m[0mHandle range: 0x0001-0xffff[0m
+        [0m[0mAttribute group type: Primary Service (0x2800)[0m
+[0;36m< ACL Data TX: Handle 69[0m flags 0x00 dlen 18                [0;33m[0;37m #24[0;37m [hci0][0;33m 4.298695[0m
+      [0;34mATT: Read By Group Type Response[0m (0x11) len 13[0m
+        [0m[0mAttribute data length: 6[0m
+        [0m[0mAttribute group list: 2 entries[0m
+        [0m[0mHandle range: 0x0001-0x0005[0m
+        [0m[0mUUID: Generic Access Profile (0x1800)[0m
+        [0m[0mHandle range: 0x0006-0x000d[0m
+        [0m[0mUUID: Generic Attribute Profile (0x1801)[0m
+[0;36m> ACL Data RX: Handle 69[0m flags 0x02 dlen 11                [0;33m[0;37m #25[0;37m [hci0][0;33m 4.338684[0m
+      [0;35mATT: Read By Group Type Request[0m (0x10) len 6[0m
+        [0m[0mHandle range: 0x0024-0xffff[0m
+        [0m[0mAttribute group type: Primary Service (0x2800)[0m
+[0;36m< ACL Data TX: Handle 69[0m flags 0x00 dlen 9                 [0;33m[0;37m #26[0;37m [hci0][0;33m 4.338854[0m
+      [0;34mATT: Error Response[0m (0x01) len 4[0m
+        [0m[0mRead By Group Type Request (0x10)[0m
+        [0m[0mHandle: 0x0024[0m
+        [0m[0mError: Attribute Not Found (0x0a)[0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5     [0;33m[0;37m #27[0;37m [hci0][0;33m 4.344824[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 69[0m
+        [0m[0mCount: 1[0m
+[0;36m> ACL Data RX: Handle 69[0m flags 0x02 dlen 1                 [0;33m[0;37m #28[0;37m [hci0][0;33m 4.378588[0m
+        [0m[1;31mframe too short[0m
+        [0m[0;37m20                                                               [0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5     [0;33m[0;37m #29[0;37m [hci0][0;33m 4.382842[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 69[0m
+        [0m[0mCount: 1[0m
+[0;36m> ACL Data RX: Handle 69[0m flags 0x02 dlen 1                 [0;33m[0;37m #30[0;37m [hci0][0;33m 4.398559[0m
+        [0m[1;31mframe too short[0m
+        [0m[0;37m20                                                               [0m
+[0;34m< HCI Command: LE Set Advertising...[0m (0x08|0x0008) plen 32 [0;33m[0;37m #31[0;37m [hci0][0;33m 5.954344[0m
+        [0m[0mLength: 0[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #32[0;37m [hci0][0;33m 5.960190[0m
+      [0;34mLE Set Advertising Data[0m (0x08|0x0008) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Scan Respons..[0m (0x08|0x0009) plen 32 [0;33m[0;37m #33[0;37m [hci0][0;33m 5.960232[0m
+        [0m[0mLength: 0[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #34[0;37m [hci0][0;33m 5.962164[0m
+      [0;34mLE Set Scan Response Data[0m (0x08|0x0009) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;35m> HCI Event: Disconnect Complete[0m (0x05) plen 4             [0;33m[0;37m #35[0;37m [hci0][0;33m 6.860272[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+        [0m[0mHandle: 69[0m
+        [0m[0mReason: [0;31mConnection Timeout[0m (0x08)[0m
+[1;35m@ MGMT Event: Device Disconnected[0m (0x000c) plen 8     [0;33m[0;37m {0x0002}[0;37m [hci0][0;33m 6.860328[0m
+        [0m[0mLE Address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mReason: Connection timeout (0x01)[0m
+[1;35m@ MGMT Event: Device Disconnected[0m (0x000c) plen 8     [0;33m[0;37m {0x0001}[0;37m [hci0][0;33m 6.860328[0m
+        [0m[0mLE Address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mReason: Connection timeout (0x01)[0m
+[0;34m< HCI Command: LE Set Advertising...[0m (0x08|0x0008) plen 32 [0;33m[0;37m #36[0;37m [hci0][0;33m 7.968901[0m
+        [0m[0mLength: 24[0m
+        [0m[0m128-bit Service UUIDs (complete): 1 entry[0m
+        [0m[0m  Vendor specific (12634d89-d598-4874-8e86-7d042ee07ba7)[0m
+        [0m[0mCompany: internal use (65535)[0m
+        [0m[0m  Data: 7074[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #37[0;37m [hci0][0;33m 7.979320[0m
+      [0;34mLE Set Advertising Data[0m (0x08|0x0008) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Scan Respons..[0m (0x08|0x0009) plen 32 [0;33m[0;37m #38[0;37m [hci0][0;33m 7.979378[0m
+        [0m[0mLength: 9[0m
+        [0m[0mName (complete): Vivaldi[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #39[0;37m [hci0][0;33m 7.981309[0m
+      [0;34mLE Set Scan Response Data[0m (0x08|0x0009) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertising...[0m (0x08|0x0006) plen 15 [0;33m[0;37m #40[0;37m [hci0][0;33m 7.981331[0m
+        [0m[0mMin advertising interval: 1280.000 msec (0x0800)[0m
+        [0m[0mMax advertising interval: 1280.000 msec (0x0800)[0m
+        [0m[0mType: Connectable undirected - ADV_IND (0x00)[0m
+        [0m[0mOwn address type: Public (0x00)[0m
+        [0m[0mDirect address type: Public (0x00)[0m
+        [0m[0mDirect address: 00:00:00:00:00:00 (OUI 00-00-00)[0m
+        [0m[0mChannel map: 37, 38, 39 (0x07)[0m
+        [0m[0mFilter policy: Allow Scan Request from Any, Allow Connect Request from Any (0x00)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #41[0;37m [hci0][0;33m 7.983295[0m
+      [0;34mLE Set Advertising Parameters[0m (0x08|0x0006) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertise Ena..[0m (0x08|0x000a) plen 1 [0;33m[0;37m #42[0;37m [hci0][0;33m 7.983313[0m
+        [0m[0mAdvertising: Enabled (0x01)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #43[0;37m [hci0][0;33m 7.985304[0m
+      [0;34mLE Set Advertise Enable[0m (0x08|0x000a) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertising...[0m (0x08|0x0008) plen 32 [0;33m[0;37m #44[0;37m [hci0][0;33m 9.984914[0m
+        [0m[0mLength: 0[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #45[0;37m [hci0][0;33m 9.988010[0m
+      [0;34mLE Set Advertising Data[0m (0x08|0x0008) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Scan Respons..[0m (0x08|0x0009) plen 32 [0;33m[0;37m #46[0;37m [hci0][0;33m 9.988039[0m
+        [0m[0mLength: 0[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #47[0;37m [hci0][0;33m 9.992304[0m
+      [0;34mLE Set Scan Response Data[0m (0x08|0x0009) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertise Ena..[0m (0x08|0x000a) plen 1 [0;33m[0;37m #48[0;37m [hci0][0;33m 9.992325[0m
+        [0m[0mAdvertising: Disabled (0x00)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4                [0;33m[0;37m #49[0;37m [hci0][0;33m 9.996441[0m
+      [0;34mLE Set Advertise Enable[0m (0x08|0x000a) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertising...[0m (0x08|0x0006) plen 15 [0;33m[0;37m #50[0;37m [hci0][0;33m 9.996461[0m
+        [0m[0mMin advertising interval: 1280.000 msec (0x0800)[0m
+        [0m[0mMax advertising interval: 1280.000 msec (0x0800)[0m
+        [0m[0mType: Connectable undirected - ADV_IND (0x00)[0m
+        [0m[0mOwn address type: Public (0x00)[0m
+        [0m[0mDirect address type: Public (0x00)[0m
+        [0m[0mDirect address: 00:00:00:00:00:00 (OUI 00-00-00)[0m
+        [0m[0mChannel map: 37, 38, 39 (0x07)[0m
+        [0m[0mFilter policy: Allow Scan Request from Any, Allow Connect Request from Any (0x00)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #51[0;37m [hci0][0;33m 10.002768[0m
+      [0;34mLE Set Advertising Parameters[0m (0x08|0x0006) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertise En..[0m (0x08|0x000a) plen 1 [0;33m[0;37m #52[0;37m [hci0][0;33m 10.002792[0m
+        [0m[0mAdvertising: Enabled (0x01)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #53[0;37m [hci0][0;33m 10.005440[0m
+      [0;34mLE Set Advertise Enable[0m (0x08|0x000a) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;35m> HCI Event: LE Meta Event[0m (0x3e) plen 19                 [0;33m[0;37m #54[0;37m [hci0][0;33m 11.065558[0m
+      [0;35mLE Connection Complete[0m (0x01)[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+        [0m[0mHandle: 68[0m
+        [0m[0mRole: Slave (0x01)[0m
+        [0m[0mPeer address type: Public (0x00)[0m
+        [0m[0mPeer address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mConnection interval: 20.00 msec (0x0010)[0m
+        [0m[0mConnection latency: 0 (0x0000)[0m
+        [0m[0mSupervision timeout: 500 msec (0x0032)[0m
+        [0m[0mMaster clock accuracy: 0x00[0m
+[1;35m@ MGMT Event: Device Connected[0m (0x000b) plen 13      [0;33m[0;37m {0x0002}[0;37m [hci0][0;33m 11.065629[0m
+        [0m[0mLE Address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mFlags: 0x00000000[0m
+        [0m[0mData length: 0[0m
+[1;35m@ MGMT Event: Device Connected[0m (0x000b) plen 13      [0;33m[0;37m {0x0001}[0;37m [hci0][0;33m 11.065629[0m
+        [0m[0mLE Address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mFlags: 0x00000000[0m
+        [0m[0mData length: 0[0m
+[0;36m< ACL Data TX: Handle 68[0m flags 0x00 dlen 16               [0;33m[0;37m #55[0;37m [hci0][0;33m 11.065733[0m
+      [0;34mLE L2CAP: Connection Parameter Update Request[0m (0x12) ident 1 len 8[0m
+        [0m[0mMin interval: 24[0m
+        [0m[0mMax interval: 40[0m
+        [0m[0mSlave latency: 0[0m
+        [0m[0mTimeout multiplier: 50[0m
+[1m= bluetoothd: No cache for 5D:36:AC:90:0B:22[0m                         [0;33m[0;33m 11.067010[0m
+[0;36m< ACL Data TX: Handle 68[0m flags 0x00 dlen 7                [0;33m[0;37m #56[0;37m [hci0][0;33m 11.066228[0m
+      [0;34mATT: Exchange MTU Request[0m (0x02) len 2[0m
+        [0m[0mClient RX MTU: 517[0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5    [0;33m[0;37m #57[0;37m [hci0][0;33m 11.106550[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 68[0m
+        [0m[0mCount: 1[0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5    [0;33m[0;37m #58[0;37m [hci0][0;33m 11.126556[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 68[0m
+        [0m[0mCount: 1[0m
+[0;34m< HCI Command: LE Set Advertising..[0m (0x08|0x0008) plen 32 [0;33m[0;37m #59[0;37m [hci0][0;33m 12.004908[0m
+        [0m[0mLength: 24[0m
+        [0m[0m128-bit Service UUIDs (complete): 1 entry[0m
+        [0m[0m  Vendor specific (12634d89-d598-4874-8e86-7d042ee07ba7)[0m
+        [0m[0mCompany: internal use (65535)[0m
+        [0m[0m  Data: 7074[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #60[0;37m [hci0][0;33m 12.009152[0m
+      [0;34mLE Set Advertising Data[0m (0x08|0x0008) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Scan Respon..[0m (0x08|0x0009) plen 32 [0;33m[0;37m #61[0;37m [hci0][0;33m 12.009206[0m
+        [0m[0mLength: 9[0m
+        [0m[0mName (complete): Vivaldi[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #62[0;37m [hci0][0;33m 12.013370[0m
+      [0;34mLE Set Scan Response Data[0m (0x08|0x0009) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;36m> ACL Data RX: Handle 68[0m flags 0x02 dlen 7                [0;33m[0;37m #63[0;37m [hci0][0;33m 12.585881[0m
+      [0;35mATT: Exchange MTU Request[0m (0x02) len 2[0m
+        [0m[0mClient RX MTU: 247[0m
+[0;36m< ACL Data TX: Handle 68[0m flags 0x00 dlen 7                [0;33m[0;37m #64[0;37m [hci0][0;33m 12.586025[0m
+      [0;34mATT: Exchange MTU Response[0m (0x03) len 2[0m
+        [0m[0mServer RX MTU: 517[0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5    [0;33m[0;37m #65[0;37m [hci0][0;33m 12.626680[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 68[0m
+        [0m[0mCount: 1[0m
+[0;36m> ACL Data RX: Handle 68[0m flags 0x02 dlen 11               [0;33m[0;37m #66[0;37m [hci0][0;33m 12.685905[0m
+      [0;35mATT: Read By Group Type Request[0m (0x10) len 6[0m
+        [0m[0mHandle range: 0x0001-0xffff[0m
+        [0m[0mAttribute group type: Primary Service (0x2800)[0m
+[0;36m< ACL Data TX: Handle 68[0m flags 0x00 dlen 18               [0;33m[0;37m #67[0;37m [hci0][0;33m 12.686080[0m
+      [0;34mATT: Read By Group Type Response[0m (0x11) len 13[0m
+        [0m[0mAttribute data length: 6[0m
+        [0m[0mAttribute group list: 2 entries[0m
+        [0m[0mHandle range: 0x0001-0x0005[0m
+        [0m[0mUUID: Generic Access Profile (0x1800)[0m
+        [0m[0mHandle range: 0x0006-0x000d[0m
+        [0m[0mUUID: Generic Attribute Profile (0x1801)[0m
+[0;36m> ACL Data RX: Handle 68[0m flags 0x02 dlen 11               [0;33m[0;37m #68[0;37m [hci0][0;33m 12.725902[0m
+      [0;35mATT: Read By Group Type Request[0m (0x10) len 6[0m
+        [0m[0mHandle range: 0x0024-0xffff[0m
+        [0m[0mAttribute group type: Primary Service (0x2800)[0m
+[0;36m< ACL Data TX: Handle 68[0m flags 0x00 dlen 9                [0;33m[0;37m #69[0;37m [hci0][0;33m 12.726112[0m
+      [0;34mATT: Error Response[0m (0x01) len 4[0m
+        [0m[0mRead By Group Type Request (0x10)[0m
+        [0m[0mHandle: 0x0024[0m
+        [0m[0mError: Attribute Not Found (0x0a)[0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5    [0;33m[0;37m #70[0;37m [hci0][0;33m 12.726638[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 68[0m
+        [0m[0mCount: 1[0m
+[0;36m> ACL Data RX: Handle 68[0m flags 0x02 dlen 1                [0;33m[0;37m #71[0;37m [hci0][0;33m 12.765803[0m
+        [0m[1;31mframe too short[0m
+        [0m[0;37m20                                                               [0m
+[0;35m> HCI Event: Number of Completed Packets[0m (0x13) plen 5    [0;33m[0;37m #72[0;37m [hci0][0;33m 12.766641[0m
+        [0m[0mNum handles: 1[0m
+        [0m[0mHandle: 68[0m
+        [0m[0mCount: 1[0m
+[0;36m> ACL Data RX: Handle 68[0m flags 0x02 dlen 1                [0;33m[0;37m #73[0;37m [hci0][0;33m 12.785792[0m
+        [0m[1;31mframe too short[0m
+        [0m[0;37m20                                                               [0m
+[0;34m< HCI Command: LE Set Advertising..[0m (0x08|0x0008) plen 32 [0;33m[0;37m #74[0;37m [hci0][0;33m 14.016991[0m
+        [0m[0mLength: 0[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #75[0;37m [hci0][0;33m 14.029294[0m
+      [0;34mLE Set Advertising Data[0m (0x08|0x0008) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Scan Respon..[0m (0x08|0x0009) plen 32 [0;33m[0;37m #76[0;37m [hci0][0;33m 14.029322[0m
+        [0m[0mLength: 0[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #77[0;37m [hci0][0;33m 14.034633[0m
+      [0;34mLE Set Scan Response Data[0m (0x08|0x0009) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;35m> HCI Event: Disconnect Complete[0m (0x05) plen 4            [0;33m[0;37m #78[0;37m [hci0][0;33m 15.246878[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+        [0m[0mHandle: 68[0m
+        [0m[0mReason: [0;31mConnection Timeout[0m (0x08)[0m
+[1;35m@ MGMT Event: Device Disconnected[0m (0x000c) plen 8    [0;33m[0;37m {0x0002}[0;37m [hci0][0;33m 15.246903[0m
+        [0m[0mLE Address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mReason: Connection timeout (0x01)[0m
+[1;35m@ MGMT Event: Device Disconnected[0m (0x000c) plen 8    [0;33m[0;37m {0x0001}[0;37m [hci0][0;33m 15.246903[0m
+        [0m[0mLE Address: 5D:36:AC:90:0B:22 (OUI 5D-36-AC)[0m
+        [0m[0mReason: Connection timeout (0x01)[0m
+[0;34m< HCI Command: LE Set Advertising..[0m (0x08|0x0008) plen 32 [0;33m[0;37m #79[0;37m [hci0][0;33m 16.032937[0m
+        [0m[0mLength: 24[0m
+        [0m[0m128-bit Service UUIDs (complete): 1 entry[0m
+        [0m[0m  Vendor specific (12634d89-d598-4874-8e86-7d042ee07ba7)[0m
+        [0m[0mCompany: internal use (65535)[0m
+        [0m[0m  Data: 7074[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #80[0;37m [hci0][0;33m 16.051689[0m
+      [0;34mLE Set Advertising Data[0m (0x08|0x0008) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Scan Respon..[0m (0x08|0x0009) plen 32 [0;33m[0;37m #81[0;37m [hci0][0;33m 16.051765[0m
+        [0m[0mLength: 9[0m
+        [0m[0mName (complete): Vivaldi[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #82[0;37m [hci0][0;33m 16.055818[0m
+      [0;34mLE Set Scan Response Data[0m (0x08|0x0009) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertising..[0m (0x08|0x0006) plen 15 [0;33m[0;37m #83[0;37m [hci0][0;33m 16.055853[0m
+        [0m[0mMin advertising interval: 1280.000 msec (0x0800)[0m
+        [0m[0mMax advertising interval: 1280.000 msec (0x0800)[0m
+        [0m[0mType: Connectable undirected - ADV_IND (0x00)[0m
+        [0m[0mOwn address type: Public (0x00)[0m
+        [0m[0mDirect address type: Public (0x00)[0m
+        [0m[0mDirect address: 00:00:00:00:00:00 (OUI 00-00-00)[0m
+        [0m[0mChannel map: 37, 38, 39 (0x07)[0m
+        [0m[0mFilter policy: Allow Scan Request from Any, Allow Connect Request from Any (0x00)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #84[0;37m [hci0][0;33m 16.058885[0m
+      [0;34mLE Set Advertising Parameters[0m (0x08|0x0006) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m
+[0;34m< HCI Command: LE Set Advertise En..[0m (0x08|0x000a) plen 1 [0;33m[0;37m #85[0;37m [hci0][0;33m 16.058905[0m
+        [0m[0mAdvertising: Enabled (0x01)[0m
+[0;35m> HCI Event: Command Complete[0m (0x0e) plen 4               [0;33m[0;37m #86[0;37m [hci0][0;33m 16.060890[0m
+      [0;34mLE Set Advertise Enable[0m (0x08|0x000a) ncmd 1[0m
+        [0m[0mStatus: [0;32mSuccess[0m (0x00)[0m

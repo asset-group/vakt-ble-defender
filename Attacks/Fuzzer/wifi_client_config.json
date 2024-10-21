@@ -1,0 +1,13 @@
+{
+    "WifiSSID": "ap_test_demo", 
+    "WifiPassword": "test12345678", 
+    "WifiUsername": "matheus_garbelini", 
+    "WifiChannel": 13, 
+    "WifiMAC": "28:c6:3f:a8:af:c5", 
+    "WifiSecurity": "CCMP", 
+    "WifiInterface": "wlan1mon", 
+    "MonitorSerialPort": "/dev/ttyUSB*", 
+    "MonitorSerialBaud": "115200", 
+    "MonitorDetectionString": "WPA2 ENTERPRISE VERSION:", 
+    "EnableFuzzing": true
+}

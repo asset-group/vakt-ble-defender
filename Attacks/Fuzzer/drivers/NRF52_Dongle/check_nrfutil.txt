@@ -1,0 +1,30 @@
+
+# Install python3
+if ! which python3 > /dev/null;
+then
+  echo "python3 not found, installing now..."
+  sudo apt install python3-dev
+else
+  echo "python3 found!"
+fi
+
+# Install python pip
+if ! which pip3 > /dev/null;
+then
+  echo "pip3 not found, installing now..."
+  wget https://bootstrap.pypa.io/get-pip.py
+  sudo python3 get-pip.py
+  rm get-pip.py
+else
+  echo "pip3 found!"
+fi
+
+if ! which nrfutil > /dev/null; 
+then
+  echo "nrfutil not found, installing now..."
+  sudo python3 -m pip install nrfutil
+else
+  echo "nrfutil found!"
+fi
+
+# ln -s /usr/local/bin/nrfutil /usr/local/bin/adafruit-nrfutil

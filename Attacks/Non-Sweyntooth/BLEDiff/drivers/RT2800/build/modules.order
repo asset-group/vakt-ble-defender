@@ -1,0 +1,14 @@
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2x00lib.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2x00mmio.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2x00pci.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2x00soc.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2x00usb.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2800lib.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2800mmio.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2400pci.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2500pci.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt61pci.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2800pci.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2500usb.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt73usb.ko
+kernel//home/matheus/Keysight/greyhound/WirelessDeepFuzzer/drivers/RT2800/rt2800usb.ko

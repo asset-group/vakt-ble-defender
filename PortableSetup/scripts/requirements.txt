@@ -1,0 +1,21 @@
+# Main VaktBLE requirements
+
+# platformio requirements
+virtualenv==20.24.5
+
+# nrfutil requirements to flash firmware
+antlib==1.1b1
+crcmod==1.7
+ecdsa==0.17.0
+intelhex==2.3.0
+libusb1==1.9.3
+piccata==2.0.1
+protobuf==3.17.3
+google-api-core==2.8.2
+pyserial==3.5
+pyspinel==1.0.3
+tqdm==4.62.0
+six>=1.9.0
+pc-ble-driver-py==0.11.4
+pyyaml==6.0.1
+adafruit-nrfutil==0.5.3.post16

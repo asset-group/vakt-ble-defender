@@ -1,0 +1,29 @@
+ARG ARCH=x86_64
+FROM registry.gitlab.com/asset-sutd/software/wireless-deep-fuzzer:release-$ARCH as base
+
+USER user
+
+WORKDIR $HOME/vaktble
+
+ADD --chown=user:user . .
+
+RUN --mount=type=secret,id=cred,mode=0666 source /run/secrets/cred && \
+	ln -sfnv $HOME/wdissector wdissector && \
+	sudo apt update && \
+	./requirements.sh && \
+	sudo apt purge clang -y && \
+	sudo find . -type f -name '*.o' -delete && \
+	sudo find . -type f -name '*.a' -delete && \
+	sudo rm -rf \
+	~/.git-credentials \
+	/tmp/* \
+	/var/lib/apt/lists/* \
+	/var/tmp/* && source scripts/python_env.sh && \
+	pip3 cache purge
+
+# Fix permissions
+RUN sudo groupadd -r plugdev &> /dev/null || true && \
+	sudo groupadd -r dialout &> /dev/null || true && \
+	sudo usermod -a -G plugdev,sudo,dialout user
+
+CMD run.sh

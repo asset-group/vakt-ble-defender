@@ -1,0 +1,5 @@
+Serial port: /dev/ttyACM0
+Advertiser Address: C8:C9:A3:D3:65:1E
+TX ---> BTLE_ADV / BTLE_SCAN_REQ
+Waiting advertisements from c8:c9:a3:d3:65:1e
+TX ---> BTLE_ADV / BTLE_SCAN_REQ

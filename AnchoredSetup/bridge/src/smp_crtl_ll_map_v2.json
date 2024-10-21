@@ -1,0 +1,609 @@
+{
+    "StatesNodes": {
+        "IDLE": {
+            "direction": 0,
+            "layers_count": 0,
+            "node_number": 0,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 315684
+            },
+            "timeout": 0,
+            "type_value": 0
+        },
+        "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND": {
+            "direction": 1,
+            "layers_count": 1,
+            "node_number": 1,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 334070
+            },
+            "timeout": 0,
+            "type_value": 0
+        },
+        "RX / LL Ctrl REQ / LL_START_ENC_REQ": {
+            "direction": 1,
+            "layers_count": 1,
+            "node_number": 11,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365419
+            },
+            "timeout": 0,
+            "type_value": 5
+        },
+        "RX / LL Ctrl RSP / LL_ENC_RSP": {
+            "direction": 1,
+            "layers_count": 1,
+            "node_number": 10,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365385
+            },
+            "timeout": 0,
+            "type_value": 4
+        },
+        "RX / LL Ctrl RSP / LL_START_ENC_RSP": {
+            "direction": 1,
+            "layers_count": 1,
+            "node_number": 16,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 407334
+            },
+            "timeout": 0,
+            "type_value": 6
+        },
+        "RX / SMP / Encryption Information": {
+            "direction": 1,
+            "layers_count": 3,
+            "node_number": 17,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 407372
+            },
+            "timeout": 0,
+            "type_value": 6
+        },
+        "RX / SMP / Master Identification": {
+            "direction": 1,
+            "layers_count": 3,
+            "node_number": 13,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365491
+            },
+            "timeout": 0,
+            "type_value": 7
+        },
+        "RX / SMP / Pairing Confirm": {
+            "direction": 1,
+            "layers_count": 3,
+            "node_number": 6,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365294
+            },
+            "timeout": 0,
+            "type_value": 3
+        },
+        "RX / SMP / Pairing Random": {
+            "direction": 1,
+            "layers_count": 3,
+            "node_number": 8,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365339
+            },
+            "timeout": 0,
+            "type_value": 4
+        },
+        "RX / SMP / Pairing Response": {
+            "direction": 1,
+            "layers_count": 3,
+            "node_number": 4,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 357746
+            },
+            "timeout": 0,
+            "type_value": 2
+        },
+        "TX / LL Ctrl IND / LL_TERMINATE_IND": {
+            "direction": 0,
+            "layers_count": 1,
+            "node_number": 2,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 337053
+            },
+            "timeout": 0,
+            "type_value": 2
+        },
+        "TX / LL Ctrl REQ / LL_ENC_REQ": {
+            "direction": 0,
+            "layers_count": 1,
+            "node_number": 9,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365358
+            },
+            "timeout": 0,
+            "type_value": 3
+        },
+        "TX / LL Ctrl RSP / LL_START_ENC_RSP": {
+            "direction": 0,
+            "layers_count": 1,
+            "node_number": 12,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365438
+            },
+            "timeout": 0,
+            "type_value": 6
+        },
+        "TX / SMP / Encryption Information": {
+            "direction": 0,
+            "layers_count": 3,
+            "node_number": 14,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365510
+            },
+            "timeout": 0,
+            "type_value": 6
+        },
+        "TX / SMP / Master Identification": {
+            "direction": 0,
+            "layers_count": 3,
+            "node_number": 15,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365532
+            },
+            "timeout": 0,
+            "type_value": 7
+        },
+        "TX / SMP / Pairing Confirm": {
+            "direction": 0,
+            "layers_count": 3,
+            "node_number": 5,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365265
+            },
+            "timeout": 0,
+            "type_value": 3
+        },
+        "TX / SMP / Pairing Random": {
+            "direction": 0,
+            "layers_count": 3,
+            "node_number": 7,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 365311
+            },
+            "timeout": 0,
+            "type_value": 4
+        },
+        "TX / SMP / Pairing Request": {
+            "direction": 0,
+            "layers_count": 3,
+            "node_number": 3,
+            "on_timeout": "",
+            "time": {
+                "tv_sec": 1682321556,
+                "tv_usec": 357709
+            },
+            "timeout": 0,
+            "type_value": 1
+        }
+    },
+    "StatesTransitions": {
+        "IDLE": {
+            "from_state": null,
+            "to_state": {
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND": {
+                    "dst_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "src_state_name": "IDLE",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 334076
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND": {
+            "from_state": [
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                "RX / LL Ctrl REQ / LL_START_ENC_REQ",
+                "TX / SMP / Master Identification",
+                "TX / LL Ctrl IND / LL_TERMINATE_IND",
+                "IDLE"
+            ],
+            "to_state": {
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND": {
+                    "dst_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "src_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 442890
+                    },
+                    "trigger": ""
+                },
+                "TX / LL Ctrl IND / LL_TERMINATE_IND": {
+                    "dst_state_name": "TX / LL Ctrl IND / LL_TERMINATE_IND",
+                    "src_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 337056
+                    },
+                    "trigger": ""
+                },
+                "TX / LL Ctrl REQ / LL_ENC_REQ": {
+                    "dst_state_name": "TX / LL Ctrl REQ / LL_ENC_REQ",
+                    "src_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 369859
+                    },
+                    "trigger": ""
+                },
+                "TX / SMP / Pairing Request": {
+                    "dst_state_name": "TX / SMP / Pairing Request",
+                    "src_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 357712
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / LL Ctrl REQ / LL_START_ENC_REQ": {
+            "from_state": [
+                "RX / LL Ctrl RSP / LL_ENC_RSP"
+            ],
+            "to_state": {
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND": {
+                    "dst_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "src_state_name": "RX / LL Ctrl REQ / LL_START_ENC_REQ",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 432039
+                    },
+                    "trigger": ""
+                },
+                "TX / LL Ctrl RSP / LL_START_ENC_RSP": {
+                    "dst_state_name": "TX / LL Ctrl RSP / LL_START_ENC_RSP",
+                    "src_state_name": "RX / LL Ctrl REQ / LL_START_ENC_REQ",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365439
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / LL Ctrl RSP / LL_ENC_RSP": {
+            "from_state": [
+                "RX / SMP / Pairing Random",
+                "TX / LL Ctrl REQ / LL_ENC_REQ"
+            ],
+            "to_state": {
+                "RX / LL Ctrl REQ / LL_START_ENC_REQ": {
+                    "dst_state_name": "RX / LL Ctrl REQ / LL_START_ENC_REQ",
+                    "src_state_name": "RX / LL Ctrl RSP / LL_ENC_RSP",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365421
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / LL Ctrl RSP / LL_START_ENC_RSP": {
+            "from_state": [
+                "TX / LL Ctrl RSP / LL_START_ENC_RSP"
+            ],
+            "to_state": {
+                "RX / SMP / Encryption Information": {
+                    "dst_state_name": "RX / SMP / Encryption Information",
+                    "src_state_name": "RX / LL Ctrl RSP / LL_START_ENC_RSP",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 407374
+                    },
+                    "trigger": ""
+                },
+                "TX / SMP / Encryption Information": {
+                    "dst_state_name": "TX / SMP / Encryption Information",
+                    "src_state_name": "RX / LL Ctrl RSP / LL_START_ENC_RSP",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 474884
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / SMP / Encryption Information": {
+            "from_state": [
+                "RX / LL Ctrl RSP / LL_START_ENC_RSP"
+            ],
+            "to_state": {
+                "RX / SMP / Master Identification": {
+                    "dst_state_name": "RX / SMP / Master Identification",
+                    "src_state_name": "RX / SMP / Encryption Information",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 407393
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / SMP / Master Identification": {
+            "from_state": [
+                "RX / SMP / Encryption Information",
+                "TX / LL Ctrl RSP / LL_START_ENC_RSP"
+            ],
+            "to_state": {
+                "TX / SMP / Encryption Information": {
+                    "dst_state_name": "TX / SMP / Encryption Information",
+                    "src_state_name": "RX / SMP / Master Identification",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365512
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / SMP / Pairing Confirm": {
+            "from_state": [
+                "TX / SMP / Pairing Confirm"
+            ],
+            "to_state": {
+                "RX / SMP / Pairing Random": {
+                    "dst_state_name": "RX / SMP / Pairing Random",
+                    "src_state_name": "RX / SMP / Pairing Confirm",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 479155
+                    },
+                    "trigger": ""
+                },
+                "TX / SMP / Pairing Random": {
+                    "dst_state_name": "TX / SMP / Pairing Random",
+                    "src_state_name": "RX / SMP / Pairing Confirm",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365313
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / SMP / Pairing Random": {
+            "from_state": [
+                "RX / SMP / Pairing Confirm",
+                "TX / SMP / Pairing Random"
+            ],
+            "to_state": {
+                "RX / LL Ctrl RSP / LL_ENC_RSP": {
+                    "dst_state_name": "RX / LL Ctrl RSP / LL_ENC_RSP",
+                    "src_state_name": "RX / SMP / Pairing Random",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 423321
+                    },
+                    "trigger": ""
+                },
+                "TX / LL Ctrl REQ / LL_ENC_REQ": {
+                    "dst_state_name": "TX / LL Ctrl REQ / LL_ENC_REQ",
+                    "src_state_name": "RX / SMP / Pairing Random",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365360
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "RX / SMP / Pairing Response": {
+            "from_state": [
+                "RX / SMP / Pairing Response",
+                "TX / SMP / Pairing Request"
+            ],
+            "to_state": {
+                "RX / SMP / Pairing Response": {
+                    "dst_state_name": "RX / SMP / Pairing Response",
+                    "src_state_name": "RX / SMP / Pairing Response",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 357770
+                    },
+                    "trigger": ""
+                },
+                "TX / SMP / Pairing Confirm": {
+                    "dst_state_name": "TX / SMP / Pairing Confirm",
+                    "src_state_name": "RX / SMP / Pairing Response",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365268
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "TX / LL Ctrl IND / LL_TERMINATE_IND": {
+            "from_state": [
+                "TX / SMP / Master Identification",
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND"
+            ],
+            "to_state": {
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND": {
+                    "dst_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "src_state_name": "TX / LL Ctrl IND / LL_TERMINATE_IND",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 369780
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "TX / LL Ctrl REQ / LL_ENC_REQ": {
+            "from_state": [
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                "RX / SMP / Pairing Random"
+            ],
+            "to_state": {
+                "RX / LL Ctrl RSP / LL_ENC_RSP": {
+                    "dst_state_name": "RX / LL Ctrl RSP / LL_ENC_RSP",
+                    "src_state_name": "TX / LL Ctrl REQ / LL_ENC_REQ",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365387
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "TX / LL Ctrl RSP / LL_START_ENC_RSP": {
+            "from_state": [
+                "RX / LL Ctrl REQ / LL_START_ENC_REQ"
+            ],
+            "to_state": {
+                "RX / LL Ctrl RSP / LL_START_ENC_RSP": {
+                    "dst_state_name": "RX / LL Ctrl RSP / LL_START_ENC_RSP",
+                    "src_state_name": "TX / LL Ctrl RSP / LL_START_ENC_RSP",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 407337
+                    },
+                    "trigger": ""
+                },
+                "RX / SMP / Master Identification": {
+                    "dst_state_name": "RX / SMP / Master Identification",
+                    "src_state_name": "TX / LL Ctrl RSP / LL_START_ENC_RSP",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365493
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "TX / SMP / Encryption Information": {
+            "from_state": [
+                "RX / LL Ctrl RSP / LL_START_ENC_RSP",
+                "RX / SMP / Master Identification"
+            ],
+            "to_state": {
+                "TX / SMP / Master Identification": {
+                    "dst_state_name": "TX / SMP / Master Identification",
+                    "src_state_name": "TX / SMP / Encryption Information",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365534
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "TX / SMP / Master Identification": {
+            "from_state": [
+                "TX / SMP / Encryption Information"
+            ],
+            "to_state": {
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND": {
+                    "dst_state_name": "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND",
+                    "src_state_name": "TX / SMP / Master Identification",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 408663
+                    },
+                    "trigger": ""
+                },
+                "TX / LL Ctrl IND / LL_TERMINATE_IND": {
+                    "dst_state_name": "TX / LL Ctrl IND / LL_TERMINATE_IND",
+                    "src_state_name": "TX / SMP / Master Identification",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 368590
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "TX / SMP / Pairing Confirm": {
+            "from_state": [
+                "RX / SMP / Pairing Response"
+            ],
+            "to_state": {
+                "RX / SMP / Pairing Confirm": {
+                    "dst_state_name": "RX / SMP / Pairing Confirm",
+                    "src_state_name": "TX / SMP / Pairing Confirm",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365296
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "TX / SMP / Pairing Random": {
+            "from_state": [
+                "RX / SMP / Pairing Confirm"
+            ],
+            "to_state": {
+                "RX / SMP / Pairing Random": {
+                    "dst_state_name": "RX / SMP / Pairing Random",
+                    "src_state_name": "TX / SMP / Pairing Random",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 365340
+                    },
+                    "trigger": ""
+                }
+            }
+        },
+        "TX / SMP / Pairing Request": {
+            "from_state": [
+                "RX / Connection REQ / AoA Constant Tone Extension / CONNECT_IND"
+            ],
+            "to_state": {
+                "RX / SMP / Pairing Response": {
+                    "dst_state_name": "RX / SMP / Pairing Response",
+                    "src_state_name": "TX / SMP / Pairing Request",
+                    "time": {
+                        "tv_sec": 1682321556,
+                        "tv_usec": 357748
+                    },
+                    "trigger": ""
+                }
+            }
+        }
+    }
+}

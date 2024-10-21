@@ -1,0 +1,10 @@
+{
+    "terminal.integrated.env.linux": {
+        "PATH": "/home/matheus/.platformio/penv/bin:/home/matheus/.platformio/penv:/home/matheus/esp/xtensa-esp32-elf/bin:/home/matheus/.local/bin:/home/matheus/esp/xtensa-esp32-elf/bin:/home/matheus/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/matheus/.platformio/packages/toolchain-gccarmnoneeabi/bin/:/home/matheus/.platformio/packages/tool-nrfjprog/:/home/matheus/.platformio/packages/tool-jlink/:/home/matheus/.platformio/penv/bin:/home/matheus/esp/xtensa-lx106-elf/bin:/home/matheus/flutter/bin/",
+        "PLATFORMIO_CALLER": "vscode"
+    },
+    "editor.formatOnSave": true,
+    "shortcuts.buttons": [
+        "file-binary , workbench.action.tasks.build , Compile & Flash"
+    ],
+}

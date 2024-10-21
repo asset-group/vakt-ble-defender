@@ -1,0 +1,97 @@
+-- Logs begin at Thu 2021-09-16 13:10:48 EDT. --
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/sdpd-service.c:add_record_to_server() Record pattern UUID 00000100-0000-1000-8000-00805f9[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/sdpd-service.c:add_record_to_server() Record pattern UUID 00001002-0000-1000-8000-00805f9[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/sdpd-service.c:add_record_to_server() Record pattern UUID 12634d89-d598-4874-8e86-7d042ee[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_service_insert() /org/bluez/hci0[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:add_uuid() sending add uuid command for index 0[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:client_ready_cb() GATT application registered: :1.501:/[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/advertising.c:parse_service_uuids() Adding ServiceUUID: 12634d89-d598-4874-8e86-7d042ee07ba7[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/advertising.c:parse_manufacturer_data() Adding ManufacturerData for ffff[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/advertising.c:refresh_adv() Refreshing advertisement: /org/bluez/example/advertisement0[0m
+Jan 10 01:37:51 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/advertising.c:add_adv_callback() Advertisement registered: /org/bluez/example/advertisement0[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:connected_callback() hci0 device 5D:36:AC:90:0B:22 connected eir_len 0[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_create() dst 5D:36:AC:90:0B:22[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() address 5D:36:AC:90:0B:22[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() Creating device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:connect_cb() New incoming LE ATT connection[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_ref() 0x152f000: g_attrib_ref=1[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:load_gatt_db() Restoring 5D:36:AC:90:0B:22 gatt database from file[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mNo cache for 5D:36:AC:90:0B:22[0m
+Jan 10 01:38:48 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-client.c:btd_gatt_client_connected() Device connected.[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:dev_disconnected() Device 5D:36:AC:90:0B:22 disconnected, reason 1[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection()[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection() Removing temporary device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_remove() Removing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:btd_device_unref() Freeing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:btd_gatt_database_att_disconnected()[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_unref() 0x152f000: g_attrib_unref=0[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_free() 0x1541c90[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mplugins/policy.c:disconnect_cb() reason 1[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:bonding_attempt_complete() hci0 bdaddr 5D:36:AC:90:0B:22 type 1 status 0xe[0m
+Jan 10 01:38:49 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:resume_discovery()[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:connected_callback() hci0 device 5D:36:AC:90:0B:22 connected eir_len 0[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_create() dst 5D:36:AC:90:0B:22[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() address 5D:36:AC:90:0B:22[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() Creating device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:connect_cb() New incoming LE ATT connection[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_ref() 0x154da80: g_attrib_ref=1[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:load_gatt_db() Restoring 5D:36:AC:90:0B:22 gatt database from file[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mNo cache for 5D:36:AC:90:0B:22[0m
+Jan 10 01:38:54 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-client.c:btd_gatt_client_connected() Device connected.[0m
+Jan 10 01:38:55 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() MTU exchange complete, with MTU: 247[0m
+Jan 10 01:38:55 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() Read By Grp Type - start: 0x0001 end: 0xffff[0m
+Jan 10 01:38:55 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() Read By Grp Type - start: 0x0024 end: 0xffff[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:dev_disconnected() Device 5D:36:AC:90:0B:22 disconnected, reason 1[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection()[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection() Removing temporary device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_remove() Removing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:btd_device_unref() Freeing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:btd_gatt_database_att_disconnected()[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_unref() 0x154da80: g_attrib_unref=0[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_free() 0x1541f10[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mplugins/policy.c:disconnect_cb() reason 1[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:bonding_attempt_complete() hci0 bdaddr 5D:36:AC:90:0B:22 type 1 status 0xe[0m
+Jan 10 01:38:58 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:resume_discovery()[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:connected_callback() hci0 device 5D:36:AC:90:0B:22 connected eir_len 0[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_create() dst 5D:36:AC:90:0B:22[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() address 5D:36:AC:90:0B:22[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() Creating device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:connect_cb() New incoming LE ATT connection[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_ref() 0x154e7d0: g_attrib_ref=1[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:load_gatt_db() Restoring 5D:36:AC:90:0B:22 gatt database from file[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mNo cache for 5D:36:AC:90:0B:22[0m
+Jan 10 01:39:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-client.c:btd_gatt_client_connected() Device connected.[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:dev_disconnected() Device 5D:36:AC:90:0B:22 disconnected, reason 1[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection()[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection() Removing temporary device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_remove() Removing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:btd_device_unref() Freeing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:btd_gatt_database_att_disconnected()[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_unref() 0x154e7d0: g_attrib_unref=0[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_free() 0x1542290[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mplugins/policy.c:disconnect_cb() reason 1[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:bonding_attempt_complete() hci0 bdaddr 5D:36:AC:90:0B:22 type 1 status 0xe[0m
+Jan 10 01:39:10 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:resume_discovery()[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:connected_callback() hci0 device 5D:36:AC:90:0B:22 connected eir_len 0[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_create() dst 5D:36:AC:90:0B:22[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() address 5D:36:AC:90:0B:22[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() Creating device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:connect_cb() New incoming LE ATT connection[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_ref() 0x154e7d0: g_attrib_ref=1[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:load_gatt_db() Restoring 5D:36:AC:90:0B:22 gatt database from file[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mNo cache for 5D:36:AC:90:0B:22[0m
+Jan 10 01:39:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-client.c:btd_gatt_client_connected() Device connected.[0m
+Jan 10 01:39:16 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() MTU exchange complete, with MTU: 247[0m
+Jan 10 01:39:16 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() Read By Grp Type - start: 0x0001 end: 0xffff[0m
+Jan 10 01:39:16 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() Read By Grp Type - start: 0x0024 end: 0xffff[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:dev_disconnected() Device 5D:36:AC:90:0B:22 disconnected, reason 1[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection()[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection() Removing temporary device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_remove() Removing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:btd_device_unref() Freeing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:btd_gatt_database_att_disconnected()[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_unref() 0x154e7d0: g_attrib_unref=0[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_free() 0x1548ca0[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mplugins/policy.c:disconnect_cb() reason 1[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:bonding_attempt_complete() hci0 bdaddr 5D:36:AC:90:0B:22 type 1 status 0xe[0m
+Jan 10 01:39:18 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:resume_discovery()[0m

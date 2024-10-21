@@ -1,0 +1,351 @@
+[2019-08-07 06:07:00.649247] Logger started
+[2019-08-07 06:07:00.695273] reconnect
+
+[2019-08-07 06:07:01.196162] 
+[2019-08-07 06:07:01.697046] 
+[2019-08-07 06:07:02.198006] 
+[2019-08-07 06:07:02.698743] 
+[2019-08-07 06:07:03.199616] 
+[2019-08-07 06:07:03.538979] scandone
+
+[2019-08-07 06:07:03.541523] state: 0 -> 2 (b0)
+
+[2019-08-07 06:07:03.548632] state: 2 -> 3 (0)
+
+[2019-08-07 06:07:03.593601] state: 3 -> 5 (10)
+
+[2019-08-07 06:07:03.593955] add 0
+
+[2019-08-07 06:07:03.596768] aid 1
+
+[2019-08-07 06:07:03.597130] cnt 
+
+[2019-08-07 06:07:03.934075] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:03.939853] EAP-PEAP: received Phase 2: code=1 identifier=5 length=5
+
+[2019-08-07 06:07:03.943302] EAP-PEAP: Phase 2 Request: type=1
+
+[2019-08-07 06:07:03.960747] EAP-PEAP: received 85 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:03.967516] EAP-PEAP: received Phase 2: code=1 identifier=6 length=43
+
+[2019-08-07 06:07:03.968092] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:03.973572] EAP-PEAP: Selected Phase 2 EAP vendor 0 method 26
+
+[2019-08-07 06:07:03.976268] EAP-MSCHAPV2: RX identifier 6 mschapv2_id 6
+
+[2019-08-07 06:07:03.980944] EAP-MSCHAPV2: Generate Challenge Response
+
+[2019-08-07 06:07:04.481502] 
+[2019-08-07 06:07:04.984176] 
+[2019-08-07 06:07:04.994275] EAP-PEAP: received 101 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:04.999214] EAP-PEAP: received Phase 2: code=1 identifier=7 length=51
+
+[2019-08-07 06:07:05.000584] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:05.007270] EAP-MSCHAPV2: RX identifier 7 mschapv2_id 6
+
+[2019-08-07 06:07:05.102258] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:05.108418] EAP-PEAP: received Phase 2: code=1 identifier=8 length=11
+
+[2019-08-07 06:07:05.114800] EAP-PEAP: Phase 2 Request: type=33
+
+[2019-08-07 06:07:05.132788] vPortFree 517 line assert fail
+
+[2019-08-07 06:07:05.183291] state: 5 -> 2 (1a0)
+
+[2019-08-07 06:07:05.185526] rm 0
+
+[2019-08-07 06:07:05.686258] 
+[2019-08-07 06:07:06.182939] reconnect
+
+[2019-08-07 06:07:06.184686] state: 2 -> 0 (0)
+
+[2019-08-07 06:07:06.304270] scandone
+
+[2019-08-07 06:07:06.304801] state: 0 -> 2 (b0)
+
+[2019-08-07 06:07:06.314188] state: 2 -> 3 (0)
+
+[2019-08-07 06:07:06.343961] state: 3 -> 5 (10)
+
+[2019-08-07 06:07:06.344309] add 0
+
+[2019-08-07 06:07:06.345736] aid 2
+
+[2019-08-07 06:07:06.346047] cnt 
+
+[2019-08-07 06:07:06.701857] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:06.707683] EAP-PEAP: received Phase 2: code=1 identifier=5 length=5
+
+[2019-08-07 06:07:06.714427] EAP-PEAP: Phase 2 Request: type=1
+
+[2019-08-07 06:07:06.726236] EAP-PEAP: received 85 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:06.732965] EAP-PEAP: received Phase 2: code=1 identifier=6 length=43
+
+[2019-08-07 06:07:06.736182] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:06.741999] EAP-PEAP: Selected Phase 2 EAP vendor 0 method 26
+
+[2019-08-07 06:07:06.743510] EAP-MSCHAPV2: RX identifier 6 mschapv2_id 6
+
+[2019-08-07 06:07:06.748311] EAP-MSCHAPV2: Generate Challenge Response
+
+[2019-08-07 06:07:06.774221] EAP-PEAP: received 101 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:06.779382] EAP-PEAP: received Phase 2: code=1 identifier=7 length=51
+
+[2019-08-07 06:07:06.782866] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:06.787915] EAP-MSCHAPV2: RX identifier 7 mschapv2_id 6
+
+[2019-08-07 06:07:06.802944] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:06.808454] EAP-PEAP: received Phase 2: code=1 identifier=8 length=11
+
+[2019-08-07 06:07:06.813699] EAP-PEAP: Phase 2 Request: type=33
+
+[2019-08-07 06:07:06.827360] vPortFree 517 line assert fail
+
+[2019-08-07 06:07:06.879704] state: 5 -> 2 (1a0)
+
+[2019-08-07 06:07:06.879990] rm 0
+
+[2019-08-07 06:07:07.380643] 
+[2019-08-07 06:07:07.885085] reconnect
+
+[2019-08-07 06:07:07.885635] state: 2 -> 0 (0)
+
+[2019-08-07 06:07:08.000655] scandone
+
+[2019-08-07 06:07:08.001947] state: 0 -> 2 (b0)
+
+[2019-08-07 06:07:08.032674] state: 2 -> 3 (0)
+
+[2019-08-07 06:07:08.042690] state: 3 -> 5 (10)
+
+[2019-08-07 06:07:08.042996] add 0
+
+[2019-08-07 06:07:08.045738] aid 3
+
+[2019-08-07 06:07:08.046014] cnt 
+
+[2019-08-07 06:07:08.398031] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:08.403136] EAP-PEAP: received Phase 2: code=1 identifier=5 length=5
+
+[2019-08-07 06:07:08.408342] EAP-PEAP: Phase 2 Request: type=1
+
+[2019-08-07 06:07:08.434797] EAP-PEAP: received 85 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:08.440653] EAP-PEAP: received Phase 2: code=1 identifier=6 length=43
+
+[2019-08-07 06:07:08.443651] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:08.450087] EAP-PEAP: Selected Phase 2 EAP vendor 0 method 26
+
+[2019-08-07 06:07:08.452756] EAP-MSCHAPV2: RX identifier 6 mschapv2_id 6
+
+[2019-08-07 06:07:08.457226] EAP-MSCHAPV2: Generate Challenge Response
+
+[2019-08-07 06:07:08.474371] EAP-PEAP: received 101 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:08.478239] EAP-PEAP: received Phase 2: code=1 identifier=7 length=51
+
+[2019-08-07 06:07:08.480944] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:08.485948] EAP-MSCHAPV2: RX identifier 7 mschapv2_id 6
+
+[2019-08-07 06:07:08.986339] 
+[2019-08-07 06:07:09.489300] 
+[2019-08-07 06:07:09.499074] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:09.502943] EAP-PEAP: received Phase 2: code=1 identifier=8 length=11
+
+[2019-08-07 06:07:09.507700] EAP-PEAP: Phase 2 Request: type=33
+
+[2019-08-07 06:07:09.552758] vPortFree 517 line assert fail
+
+[2019-08-07 06:07:09.590896] state: 5 -> 2 (1a0)
+
+[2019-08-07 06:07:09.591225] rm 0
+
+[2019-08-07 06:07:10.091932] 
+[2019-08-07 06:07:10.588439] reconnect
+
+[2019-08-07 06:07:10.588914] state: 2 -> 0 (0)
+
+[2019-08-07 06:07:10.708705] scandone
+
+[2019-08-07 06:07:10.709185] state: 0 -> 2 (b0)
+
+[2019-08-07 06:07:10.717240] state: 2 -> 3 (0)
+
+[2019-08-07 06:07:10.736047] state: 3 -> 5 (10)
+
+[2019-08-07 06:07:10.736409] add 0
+
+[2019-08-07 06:07:10.736643] aid 4
+
+[2019-08-07 06:07:10.736862] cnt 
+
+[2019-08-07 06:07:11.089363] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:11.101552] EAP-PEAP: received Phase 2: code=1 identifier=5 length=5
+
+[2019-08-07 06:07:11.102461] EAP-PEAP: Phase 2 Request: type=1
+
+[2019-08-07 06:07:11.136596] EAP-PEAP: received 85 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:11.146431] EAP-PEAP: received Phase 2: code=1 identifier=6 length=43
+
+[2019-08-07 06:07:11.146791] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:11.150940] EAP-PEAP: Selected Phase 2 EAP vendor 0 method 26
+
+[2019-08-07 06:07:11.152461] EAP-MSCHAPV2: RX identifier 6 mschapv2_id 6
+
+[2019-08-07 06:07:11.159123] EAP-MSCHAPV2: Generate Challenge Response
+
+[2019-08-07 06:07:11.173706] EAP-PEAP: received 101 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:11.179768] EAP-PEAP: received Phase 2: code=1 identifier=7 length=51
+
+[2019-08-07 06:07:11.182618] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:11.187159] EAP-MSCHAPV2: RX identifier 7 mschapv2_id 6
+
+[2019-08-07 06:07:11.688056] 
+[2019-08-07 06:07:12.189073] 
+[2019-08-07 06:07:12.197672] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:12.201016] EAP-PEAP: received Phase 2: code=1 identifier=8 length=11
+
+[2019-08-07 06:07:12.207466] EAP-PEAP: Phase 2 Request: type=33
+
+[2019-08-07 06:07:12.248830] vPortFree 517 line assert fail
+
+[2019-08-07 06:07:12.272296] state: 5 -> 2 (1a0)
+
+[2019-08-07 06:07:12.272569] rm 0
+
+[2019-08-07 06:07:12.773321] 
+[2019-08-07 06:07:13.276329] reconnect
+
+[2019-08-07 06:07:13.282039] state: 2 -> 0 (0)
+
+[2019-08-07 06:07:13.393676] scandone
+
+[2019-08-07 06:07:13.394038] state: 0 -> 2 (b0)
+
+[2019-08-07 06:07:13.402337] state: 2 -> 3 (0)
+
+[2019-08-07 06:07:13.416077] state: 3 -> 5 (10)
+
+[2019-08-07 06:07:13.416361] add 0
+
+[2019-08-07 06:07:13.416554] aid 5
+
+[2019-08-07 06:07:13.416756] cnt 
+
+[2019-08-07 06:07:13.754097] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:13.758644] EAP-PEAP: received Phase 2: code=1 identifier=5 length=5
+
+[2019-08-07 06:07:13.767834] EAP-PEAP: Phase 2 Request: type=1
+
+[2019-08-07 06:07:13.780964] EAP-PEAP: received 85 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:13.786459] EAP-PEAP: received Phase 2: code=1 identifier=6 length=43
+
+[2019-08-07 06:07:13.789281] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:13.796860] EAP-PEAP: Selected Phase 2 EAP vendor 0 method 26
+
+[2019-08-07 06:07:13.801445] EAP-MSCHAPV2: RX identifier 6 mschapv2_id 6
+
+[2019-08-07 06:07:13.803136] EAP-MSCHAPV2: Generate Challenge Response
+
+[2019-08-07 06:07:13.820394] EAP-PEAP: received 101 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:13.826517] EAP-PEAP: received Phase 2: code=1 identifier=7 length=51
+
+[2019-08-07 06:07:13.828293] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:13.835762] EAP-MSCHAPV2: RX identifier 7 mschapv2_id 6
+
+[2019-08-07 06:07:13.848346] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:13.852913] EAP-PEAP: received Phase 2: code=1 identifier=8 length=11
+
+[2019-08-07 06:07:13.857349] EAP-PEAP: Phase 2 Request: type=33
+
+[2019-08-07 06:07:13.869715] vPortFree 517 line assert fail
+
+[2019-08-07 06:07:13.905610] state: 5 -> 2 (1a0)
+
+[2019-08-07 06:07:13.906762] rm 0
+
+[2019-08-07 06:07:14.407108] 
+[2019-08-07 06:07:14.909592] reconnect
+
+[2019-08-07 06:07:14.909999] state: 2 -> 0 (0)
+
+[2019-08-07 06:07:15.026958] scandone
+
+[2019-08-07 06:07:15.027331] state: 0 -> 2 (b0)
+
+[2019-08-07 06:07:15.035728] state: 2 -> 3 (0)
+
+[2019-08-07 06:07:15.047855] state: 3 -> 5 (10)
+
+[2019-08-07 06:07:15.048196] add 0
+
+[2019-08-07 06:07:15.049964] aid 6
+
+[2019-08-07 06:07:15.050209] cnt 
+
+[2019-08-07 06:07:15.383274] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:15.388627] EAP-PEAP: received Phase 2: code=1 identifier=5 length=5
+
+[2019-08-07 06:07:15.392741] EAP-PEAP: Phase 2 Request: type=1
+
+[2019-08-07 06:07:15.403774] EAP-PEAP: received 85 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:15.410480] EAP-PEAP: received Phase 2: code=1 identifier=6 length=43
+
+[2019-08-07 06:07:15.412737] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:15.417538] EAP-PEAP: Selected Phase 2 EAP vendor 0 method 26
+
+[2019-08-07 06:07:15.424123] EAP-MSCHAPV2: RX identifier 6 mschapv2_id 6
+
+[2019-08-07 06:07:15.426811] EAP-MSCHAPV2: Generate Challenge Response
+
+[2019-08-07 06:07:15.443338] EAP-PEAP: received 101 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:15.449073] EAP-PEAP: received Phase 2: code=1 identifier=7 length=51
+
+[2019-08-07 06:07:15.452335] EAP-PEAP: Phase 2 Request: type=26
+
+[2019-08-07 06:07:15.456997] EAP-MSCHAPV2: RX identifier 7 mschapv2_id 6
+
+[2019-08-07 06:07:15.467769] EAP-PEAP: received 53 bytes encrypted data for Phase 2
+
+[2019-08-07 06:07:15.476446] EAP-PEAP: received Phase 2: code=1 identifier=8 length=11
+
+[2019-08-07 06:07:15.477481] EAP-PEAP: Phase 2 Request: type=33
+
+[2019-08-07 06:07:15.496514] vPortFree 517 line assert fail
+
+[2019-08-07 06:07:15.547934] state: 5 -> 2 (1a0)
+
+[2019-08-07 06:07:15.548282] rm 0
+

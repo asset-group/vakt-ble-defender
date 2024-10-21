@@ -1,0 +1,3 @@
+[console_scripts]
+mirage = mirage.mirage:main
+

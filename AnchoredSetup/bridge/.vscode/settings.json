@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSave": true,
+    "python.autoComplete.extraPaths": [
+        "src/libs/"
+    ],
+    "python.defaultInterpreterPath": "runtime/python/install/bin/python3",
+    "python.formatting.autopep8Args": [
+        "--ignore",
+        "E402"
+    ],
+    "python.analysis.extraPaths": [
+        "src/libs/"
+    ]
+}

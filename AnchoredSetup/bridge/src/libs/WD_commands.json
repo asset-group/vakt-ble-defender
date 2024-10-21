@@ -1,0 +1,102 @@
+{
+    "Structure": {
+        "btatt": [
+            {
+                "name": "ATT Layer",
+                "type": "common",
+                "obs": "filter",
+                "opcode": " ",
+                "command": "(btatt.handle in {0x0000..0xffff}) or (btatt.starting_handle in {0x0000..0xffff}) or (btatt.opcode in {0x01..0x1e}) or (btatt.opcode == 0x52) or (btatt.opcode == 0xd2)"
+            }
+        ],
+        "btle.data_header.llid == 0x2 and btle.l2cap_data": [
+            {
+                "name": "L2CAP fragment",
+                "type": "common",
+                "obs": "filter",
+                "opcode": " ",
+                "command": "uint(frame[23:2]) >= btle.data_header.length - 4 "
+            }
+        ],
+        "btsmp": [
+            {
+                "name": "Pairing Request",
+                "type": "specific",
+                "obs": "filter",
+                "opcode": "btsmp.opcode == 0x01",
+                "command": "btsmp.max_enc_key_size >= 7 and btsmp.max_enc_key_size <= 16"
+            }
+        ],
+        "btsmp.opcode == 0x0d": [
+            {
+                "name": "DHKey Check",
+                "type": "common",
+                "obs": "filter",
+                "opcode": " ",
+                "command": "btsmp.dhkey_check > 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"
+            }
+        ],
+        "btl2cap": [
+            {
+                "name": "L2CAP PDU",
+                "type": "common",
+                "obs": "filter",
+                "opcode": " ",
+                "command": "btle.data_header.length == uint(frame[23:2]) + 4 and btl2cap.cid != 0x0000 and btl2cap.cid in {0x0004, 0x0005, 0x0006, 0x0020..0x003E, 0x0040..0x007F}"
+            }
+        ],
+        "btle.advertising_header": [
+            {
+                "name": "Connection Request",
+                "type": "specific",
+                "obs": "filter",
+                "opcode": "btle.advertising_header.pdu_type == 0x5",
+                "command": "btle.link_layer_data.channel_map > 00:00:00:00:00 and btle.link_layer_data.window_offset >= 0 and btle.link_layer_data.window_offset <= btle.link_layer_data.interval and btle.link_layer_data.interval >= 5 and btle.link_layer_data.interval <= 3200 and btle.link_layer_data.latency >= 0 and btle.link_layer_data.latency <= {{uint(frame[45:2])*2}-1} and btle.link_layer_data.latency < 500 and btle.link_layer_data.timeout > {{1+uint(frame[47:2])}*uint(frame[45:2])*2} and btle.link_layer_data.timeout >= 10 and btle.link_layer_data.timeout <= 3200 and btle.link_layer_data.hop >= 5 and btle.link_layer_data.hop <= 16 and btle.link_layer_data.sleep_clock_accuracy >= 0 and btle.link_layer_data.sleep_clock_accuracy <= 7 and len(btle.crc)*8 >= 20 and len(btle.crc)*8 <= 24"
+            }
+        ]
+    },
+    "Flooding": {
+        "btatt": [
+            {
+                "name": "ATT Opcode request",
+                "type": "request",
+                "obs": "filter",
+                "command": "btatt.opcode in {0x04, 0x02, 0x0A, 0x06, 0x08, 0x0E, 0x10, 0x0C, 0x20, 0x18, 0x16, 0x12}"
+            },
+            {
+                "name": "ATT Opcode response",
+                "type": "response",
+                "obs": "filter",
+                "command": "btatt.opcode in {0x01, 0x05, 0x03, 0x0B, 0x07, 0x09, 0x0F, 0x11, 0x0D, 0x21, 0x19, 0x17, 0x13}"
+            }
+        ],
+        "btle.control_opcode": [
+            {
+                "name": "LL Opcode request",
+                "type": "request",
+                "obs": "filter",
+                "command": "btle.control_opcode in {0x03, 0x05, 0x08, 0x0A, 0x0E, 0x0F, 0x12, 0x14, 0x16, 0x1A, 0x1D, 0x1F, 0x23}"
+            },
+            {
+                "name": "LL Opcode response",
+                "type": "response",
+                "obs": "filter",
+                "command": "btle.control_opcode in {0x04, 0x06, 0x09, 0x0B, 0x10, 0x13, 0x15, 0x17, 0x1B, 0x1E, 0x20, 0x24}"
+            },
+            {
+                "name": "LL Opcode indication",
+                "type": "indication",
+                "obs": "filter",
+                "command": "btle.control_opcode in {0x00, 0x01, 0x02, 0x0C, 0x0D, 0x11, 0x18, 0x19, 0x1C, 0x21, 0x22, 0x25}"
+            }
+        ],
+        "btle.l2cap_data": [
+            {
+                "name": "L2CAP fragment",
+                "type": "request",
+                "obs": "filter",
+                "command": "btle.l2cap_data"
+            }
+        ]
+    }
+}

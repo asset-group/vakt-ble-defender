@@ -1,0 +1,44 @@
+-- Logs begin at Thu 2021-09-16 13:10:48 EDT. --
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection()[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection() Removing temporary device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_remove() Removing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:btd_device_unref() Freeing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:btd_gatt_database_att_disconnected()[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_unref() 0x15505a0: g_attrib_unref=0[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_free() 0x154ba20[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mplugins/policy.c:disconnect_cb() reason 1[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:bonding_attempt_complete() hci0 bdaddr 5D:36:AC:90:0B:22 type 1 status 0xe[0m
+Jan 10 03:11:20 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:resume_discovery()[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:connected_callback() hci0 device 5D:36:AC:90:0B:22 connected eir_len 0[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_create() dst 5D:36:AC:90:0B:22[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() address 5D:36:AC:90:0B:22[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() Creating device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:connect_cb() New incoming LE ATT connection[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_ref() 0x1547780: g_attrib_ref=1[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:load_gatt_db() Restoring 5D:36:AC:90:0B:22 gatt database from file[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mNo cache for 5D:36:AC:90:0B:22[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-client.c:btd_gatt_client_connected() Device connected.[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() MTU exchange complete, with MTU: 247[0m
+Jan 10 03:12:08 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() MTU exchange complete, with MTU: 247[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:dev_disconnected() Device 5D:36:AC:90:0B:22 disconnected, reason 1[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection()[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:adapter_remove_connection() Removing temporary device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_remove() Removing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:btd_device_unref() Freeing device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:btd_gatt_database_att_disconnected()[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_unref() 0x1547780: g_attrib_unref=0[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_free() 0x154a280[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mplugins/policy.c:disconnect_cb() reason 1[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:bonding_attempt_complete() hci0 bdaddr 5D:36:AC:90:0B:22 type 1 status 0xe[0m
+Jan 10 03:12:15 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:resume_discovery()[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/adapter.c:connected_callback() hci0 device 5D:36:AC:90:0B:22 connected eir_len 0[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_create() dst 5D:36:AC:90:0B:22[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() address 5D:36:AC:90:0B:22[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:device_new() Creating device /org/bluez/hci0/dev_5D_36_AC_90_0B_22[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-database.c:connect_cb() New incoming LE ATT connection[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245mattrib/gattrib.c:g_attrib_ref() 0x1541700: g_attrib_ref=1[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:load_gatt_db() Restoring 5D:36:AC:90:0B:22 gatt database from file[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mNo cache for 5D:36:AC:90:0B:22[0m
+Jan 10 03:12:23 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/gatt-client.c:btd_gatt_client_connected() Device connected.[0m
+Jan 10 03:12:24 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() MTU exchange complete, with MTU: 247[0m
+Jan 10 03:12:24 lb-VM bluetoothd[61229]: [0;38;5;245m[0;1;31m[0;38;5;245msrc/device.c:gatt_debug() MTU exchange complete, with MTU: 247[0m

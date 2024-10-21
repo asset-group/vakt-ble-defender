@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+import re
+import sys
+import nordicsemi
+from nordicsemi.__main__ import cli
+
+if __name__ == '__main__':
+    print("Running from " + nordicsemi.__file__)
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    # Add maximum debug output
+    # sys.argv.insert(1, '-v')
+    # sys.argv.insert(1, '-v')
+    # sys.argv.insert(1, '-v')
+    sys.exit(cli())

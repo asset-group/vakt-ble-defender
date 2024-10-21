@@ -1,0 +1,44 @@
+{
+    "config": {
+        "Name": "BLE",
+        "Options": {
+            "DefaultProtocolName": "encap:NORDIC_BLE",
+            "DefaultProtocolEncapName": "encap:NORDIC_BLE"
+        },
+        "StateMapper": {
+            "PacketLayerOffset": 1,
+            "Mapping": [
+                {
+                    "AppendSummary": false,
+                    "Filter": "btsmp",
+                    "LayerName": "SMP",
+                    "StateNameField": "btsmp.opcode"
+                },
+                {
+                    "AppendSummary": false,
+                    "Filter": "btle.control_opcode in {0x03, 0x05, 0x08, 0x0A, 0x0E, 0x0F, 0x12, 0x14, 0x16, 0x1A, 0x1D, 0x1F, 0x23}",
+                    "LayerName": "LL Ctrl REQ",
+                    "StateNameField": "btle.control_opcode"
+                },
+                {
+                    "AppendSummary": false,
+                    "Filter": "btle.control_opcode in {0x04, 0x06, 0x09, 0x0B, 0x10, 0x13, 0x15, 0x17, 0x1B, 0x1E, 0x20, 0x24}",
+                    "LayerName": "LL Ctrl RSP",
+                    "StateNameField": "btle.control_opcode"
+                },
+                {
+                    "AppendSummary": false,
+                    "Filter": "btle.control_opcode in {0x00, 0x01, 0x02, 0x0C, 0x0D, 0x11, 0x18, 0x19, 0x1C, 0x21, 0x22, 0x25}",
+                    "LayerName": "LL Ctrl IND",
+                    "StateNameField": "btle.control_opcode"
+                },
+                {
+                    "AppendSummary": true,
+                    "Filter": "btle.advertising_header.pdu_type == 0x5 and nordic_ble.crcok == 1",
+                    "LayerName": "Connection REQ",
+                    "StateNameField": "btle.advertising_header.ch_sel"
+                }
+            ]
+        }
+    }
+}

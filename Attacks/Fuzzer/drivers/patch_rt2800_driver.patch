@@ -1,0 +1,524 @@
+diff -ur a/rt2800usb.c b/rt2800usb.c
+--- a/rt2800usb.c	2020-05-30 17:14:57.092372035 +0800
++++ b/rt2800usb.c	2020-10-09 01:43:53.365691201 +0800
+@@ -29,6 +29,233 @@
+ #include "rt2800usb.h"
+ 
+ /*
++ * Netlink functions.
++ */
++
++#define NETLINK_USER 31				// Netlink port
++#define NETLINK_PID 1				// PID for unicast
++#define NETLINK_GROUP 1				// PID for multicast
++#define NETLINK_GFP_FLAG GFP_ATOMIC // NETLINK Non block IO flag
++
++#define NETLINK_CMD_READ_ADDR 0
++#define NETLINK_CMD_WRITE_ADDR 1
++#define NETLINK_CMD_MULTIWRITE_ADDR 2
++#define NETLINK_CMD_MULTIREAD_ADDR 3
++#define NETLINK_CMD_INTERRUPT_RX_ENABLE 4
++#define NETLINK_CMD_FORCE_FLAGS_ENABLE 5
++#define NETLINK_CMD_FORCE_FLAGS_RETRY 6
++#define NETLINK_CMD_SEND_DATA 7
++
++#define NETLINK_STATUS_OK 0
++#define NETLINK_STATUS_FAIL -1
++
++extern int rt2x00queue_write_tx_frame(struct data_queue *queue, struct sk_buff *skb,
++									  struct ieee80211_sta *sta, bool local);
++
++static bool modparam_server;
++module_param_named(server, modparam_server, bool, 0444);
++MODULE_PARM_DESC(server, "Enable shared memory server.");
++
++static struct sock *nl_sk = NULL; 			// Netlink socket
++static struct rt2x00_dev *server_rt2x00dev;
++static int server_rt2x00dev_id;
++static bool server_initialized = false;
++static u8 server_force_flags_retry = 0; 	// Force packets to disable retry in unicasts
++static u8 server_force_flags_enable = 0;
++static u8 server_rt2x00dev_debug = 0;
++static u8 server_interrupt_rx_enable = 0;
++static bool server_tx_info_allocated = false;
++static struct sk_buff *server_base_skb;
++
++// Send short respones using raw netlink socket
++static inline int server_send_response(void *msg, u8 msg_size)
++{
++	struct sk_buff *skb_out;
++	int res;
++
++	if (msg_size > 176)								 // Raw netlink messages don't work for more than 176 bytes
++		return -1;									 // prevent packages higher than 2048 bytes
++	skb_out = nlmsg_new(msg_size, NETLINK_GFP_FLAG); // Allocate skb with msg_size
++	if (!skb_out)
++		return -1;
++
++	memcpy(skb_out->data, (u8 *)msg, msg_size); //Copy msg to skb
++	skb_out->len = msg_size;					//Configure skb size
++
++	res = nlmsg_multicast(nl_sk, skb_out, NETLINK_USER, NETLINK_GROUP, NETLINK_GFP_FLAG);
++
++	if (res < 0)
++		return -1;
++
++	return msg_size;
++}
++
++// Send wifi data packets to user-space using netlink protocol
++static inline int server_send_data(void *msg, u16 msg_size)
++{
++	struct sk_buff *skb_out;
++	int res;
++
++	if (msg_size > 2048)
++		return 0; // prevent packages higher than 2048 bytes
++
++	skb_out = nlmsg_new(msg_size, NETLINK_GFP_FLAG); // Allocate skb with msg_size
++	if (!skb_out)
++		return 0;
++
++	nlmsg_put(skb_out, NETLINK_USER, 0, NLMSG_DONE, msg_size, 0); //put netlink protocol data in skb
++	memcpy(skb_out->data, (u8 *)msg, msg_size);					  //Copy msg to skb (ignoring netlink data offset)
++	skb_out->len = msg_size;									  // set skb length (ignoring netlink size)
++	//printk("len:%d, data:%02x\n", skb_out->len, ((u8 *)skb_out->data)[0]);
++	res = nlmsg_multicast(nl_sk, skb_out, NETLINK_USER, NETLINK_GROUP, NETLINK_GFP_FLAG);
++
++	if (res < 0)
++	{
++		server_interrupt_rx_enable = 0;
++		printk("Netlink: Client disconnected\n");
++		return res;
++	}
++	return msg_size;
++}
++
++// Receive Wi-Fi packets during interrupt and send it to user-space clients
++static void rt2800_netlink_interrupt(struct rt2x00_dev *rt2x00dev, struct sk_buff *skb)
++{
++	struct usb_device *usb_dev = to_usb_device_intf(rt2x00dev->dev);
++
++	if (usb_dev->devnum == server_rt2x00dev_id && server_interrupt_rx_enable)
++	{
++		server_send_data(skb->data, skb->len);
++	}
++}
++
++// Receive command or data from user-space
++static void server_handle_rcv(struct sk_buff *skb)
++{
++	u8 netlink_command;
++	u32 *addr_requested;
++	u32 *addr_value;
++	u8 addr_value_size;
++	u32 reg_val;
++	int res;
++	struct data_queue *queue = NULL;
++	struct ieee80211_tx_control control = {};
++	struct sk_buff *s;
++
++	netlink_command = skb->data[0];
++	if (server_rt2x00dev)
++	{
++		switch (netlink_command)
++		{
++			// Read RT2800USB registers
++		case NETLINK_CMD_READ_ADDR:
++			if (skb->len < 5)
++				return; // cmd (1) + address (4)
++			addr_requested = (u32 *)(&skb->data[1]);
++
++			reg_val = rt2x00usb_register_read(server_rt2x00dev, *addr_requested);
++			res = server_send_response(&reg_val, sizeof(u32));
++
++			printk(KERN_INFO "Netlink: READ Address:0x%04X Value:0x%04X\n", *addr_requested, reg_val);
++			break;
++
++		case NETLINK_CMD_WRITE_ADDR:
++			if (skb->len < 9)
++				return; // cmd (1) + address (4) + value (4)
++			addr_requested = (u32 *)(&skb->data[1]);
++			addr_value = (u32 *)(&skb->data[5]);
++
++			res = rt2x00usb_register_write_s(server_rt2x00dev, *addr_requested, *addr_value);
++			server_send_response(&res, sizeof(res));
++
++			printk(KERN_INFO "Netlink: WRITE Address:0x%04X Value:0x%04X\n", *addr_requested, *addr_value);
++			break;
++
++		case NETLINK_CMD_MULTIWRITE_ADDR:
++			if (skb->len < 10)
++				return; // cmd (1) + address (4) + size(1) + values (size) - minimum size is 4 bytes
++
++			addr_requested = (u32 *)(&skb->data[1]);
++			addr_value_size = skb->data[5];
++			addr_value = (u32 *)(&skb->data[6]);
++
++			if ((addr_value_size < 4) || (addr_value_size > (skb->len - 6)))
++				return; // Minum 4 bytes and avoid buffer overflow, 6 is the header
++			res = rt2x00usb_register_multiwrite_s(server_rt2x00dev, *addr_requested, addr_value, addr_value_size);
++			server_send_response(&res, sizeof(res));
++
++			printk(KERN_INFO "Netlink: MULTIWRITE Address:0x%04X Size:%d\n", *addr_requested, addr_value_size);
++			break;
++		case NETLINK_CMD_FORCE_FLAGS_ENABLE:
++			if (skb->len < 2)
++				return;
++			server_force_flags_enable = skb->data[1];
++
++			res = NETLINK_STATUS_OK;
++			server_send_response(&res, sizeof(res));
++
++			printk(KERN_INFO "Netlink: Force flags set to %d\n", server_force_flags_enable);
++			break;
++
++		case NETLINK_CMD_FORCE_FLAGS_RETRY:
++			if (skb->len < 2)
++				return;
++			server_force_flags_retry = skb->data[1];
++			res = NETLINK_STATUS_OK;
++			server_send_response(&res, sizeof(res));
++
++			printk(KERN_INFO "Netlink: Retry flag set to %d\n", server_force_flags_retry);
++			break;
++
++		case NETLINK_CMD_INTERRUPT_RX_ENABLE:
++			if (skb->len < 2)
++				return;
++			server_interrupt_rx_enable = skb->data[1];
++			res = NETLINK_STATUS_OK;
++			server_send_response(&res, sizeof(res));
++
++			printk(KERN_INFO "Netlink: RX interrupt set to %d\n", server_interrupt_rx_enable);
++			break;
++
++		case NETLINK_CMD_SEND_DATA:
++			if (skb->len < 9)
++				return;
++
++			queue = rt2x00queue_get_tx_queue(server_rt2x00dev, Q_INDEX);
++			if (queue)
++			{
++
++				res = skb->len - 9;
++				s = dev_alloc_skb(res + server_rt2x00dev->hw->extra_tx_headroom);
++				if(s == NULL)
++					return;
++				// Reserve required headroom for hardware
++				skb_reserve(s, server_rt2x00dev->hw->extra_tx_headroom);
++				// Increment user data
++				skb_put(s, res);
++				// Copy payload to skb user data
++				memcpy(s->data, &skb->data[9], res);
++				// Send skb to queue
++				// printk("Netlink len:%d, Payload len:%d, skb address:%08lX\n", skb->len, s->len, (long unsigned int)s);
++				if(rt2x00queue_write_tx_frame(queue, s, control.sta, true)){
++					dev_kfree_skb_any(skb);
++				} 
++			}
++			break;
++		}
++	}
++}
++
++// Removes USB device from Netlink server
++static void rt2800_netlink_remove_device(void)
++{
++	printk("Netlink: Device %d removed from server\n", server_rt2x00dev_id);
++	server_rt2x00dev = NULL;
++	server_rt2x00dev_id = 0;
++	server_initialized = false;
++}
++
++/*
+  * Allow hardware encryption to be disabled.
+  */
+ static bool modparam_nohwcrypt;
+@@ -269,6 +496,7 @@
+  */
+ static int rt2800usb_init_registers(struct rt2x00_dev *rt2x00dev)
+ {
++	struct usb_device *usb_dev = to_usb_device_intf(rt2x00dev->dev);
+ 	u32 reg;
+ 
+ 	/*
+@@ -290,6 +518,14 @@
+ 
+ 	rt2x00usb_register_write(rt2x00dev, MAC_SYS_CTRL, 0x00000000);
+ 
++	if (!server_initialized)
++	{
++		server_initialized = true;
++		server_rt2x00dev = rt2x00dev;
++		server_rt2x00dev_id = usb_dev->devnum;
++		printk("Netlink: Device %d registered to server\n", server_rt2x00dev_id);
++	}
++
+ 	return 0;
+ }
+ 
+@@ -403,7 +639,10 @@
+ {
+ 	struct skb_frame_desc *skbdesc = get_skb_frame_desc(entry->skb);
+ 	__le32 *txi = (__le32 *) entry->skb->data;
++	__le32 *txwi;
++	struct usb_device *usb_dev = to_usb_device_intf(entry->queue->rt2x00dev->dev);
+ 	u32 word;
++	u32 word2;
+ 
+ 	/*
+ 	 * Initialize TXINFO descriptor
+@@ -427,6 +666,30 @@
+ 	rt2x00_desc_write(txi, 0, word);
+ 
+ 	/*
++	 * Ovewrite TXINFO according to Netlink flags
++	 */
++	if (usb_dev->devnum == server_rt2x00dev_id && server_force_flags_enable)
++	{
++		//Force txwi atributes
++		txwi = rt2800usb_get_txwi(entry);
++		word2 = rt2x00_desc_read(txwi, 1);
++		rt2x00_set_field32(&word2, TXWI_W1_ACK, server_force_flags_retry); // unicast acknowledgements - retry
++		rt2x00_desc_write(txwi, 1, word2);
++	}
++
++	/*
++	 * Allocate server skb for internal usage (requires at leat one packet being sent)
++	 */
++	if (server_tx_info_allocated == false)
++	{
++		server_tx_info_allocated = true;
++
++		server_base_skb = skb_copy(entry->skb, GFP_KERNEL); //Copy main skb structure
++
++		printk(KERN_INFO "Netlink: server_base_skb registered\n");
++	}
++
++	/*
+ 	 * Register descriptor details in skb frame descriptor.
+ 	 */
+ 	skbdesc->flags |= SKBDESC_DESC_IN_SKB;
+@@ -457,6 +720,9 @@
+ {
+ 	struct rt2x00_dev *rt2x00dev =
+ 	    container_of(work, struct rt2x00_dev, txdone_work);
++	struct usb_device *usb_dev = to_usb_device_intf(rt2x00dev->dev);
++	u32 test_var;
++	u32 test_var2;
+ 
+ 	while (!kfifo_is_empty(&rt2x00dev->txstatus_fifo) ||
+ 	       rt2800_txstatus_timeout(rt2x00dev)) {
+@@ -473,6 +739,35 @@
+ 		if (rt2800_txstatus_pending(rt2x00dev))
+ 			rt2800usb_async_read_tx_status(rt2x00dev);
+ 	}
++
++	/*
++	 * Debug registers
++	 */
++	if ((usb_dev->devnum == server_rt2x00dev_id) && server_rt2x00dev_debug)
++	{
++		printk(KERN_INFO "--------------------");
++		printk(KERN_INFO "Device ID: %d\n", usb_dev->devnum);
++		test_var = rt2800_register_read(rt2x00dev, RX_FILTER_CFG);
++		if (test_var)
++			printk("RX_FILTER_CFG: %04X\n", test_var);
++
++		test_var = rt2800_register_read(rt2x00dev, AUTO_RSP_CFG);
++		if (test_var)
++		{
++			printk("AUTO_RSP_CFG: %04X\n", test_var);
++			rt2x00_set_field32(&test_var, AUTO_RSP_CFG_AR_PREAMBLE, 1); //Always enable ACK response
++			rt2800_register_write(rt2x00dev, AUTO_RSP_CFG, test_var);
++		}
++
++		test_var = rt2800_register_read(rt2x00dev, MAC_SYS_CTRL);
++		if (test_var)
++			printk("MAC_SYS_CTRL: %04X\n", test_var);
++
++		test_var = rt2800_register_read(rt2x00dev, MAC_ADDR_DW0);
++		test_var2 = rt2800_register_read(rt2x00dev, MAC_ADDR_DW1);
++
++		printk("MAC DW0/DW1: %04X%04X\n", test_var, test_var2);
++	}
+ }
+ 
+ /*
+@@ -673,6 +968,8 @@
+ };
+ 
+ static const struct rt2x00lib_ops rt2800usb_rt2x00_ops = {
++	.netlink_rx = rt2800_netlink_interrupt,
++	.netlink_remove_device = rt2800_netlink_remove_device,
+ 	.probe_hw		= rt2800usb_probe_hw,
+ 	.get_firmware_name	= rt2800usb_get_firmware_name,
+ 	.check_firmware		= rt2800_check_firmware,
+@@ -1268,4 +1565,52 @@
+ 	.disable_hub_initiated_lpm = 1,
+ };
+ 
+-module_usb_driver(rt2800usb_driver);
++/*
++ * Driver registration.
++ */
++
++// Start Netlink server socket
++static int __init rt2800usb_init(void)
++{
++	int ret;
++	struct netlink_kernel_cfg cfg = {
++		.input = server_handle_rcv,
++	};
++
++	printk(KERN_INFO "RT2800USB: Service started\n");
++
++	ret = usb_register(&rt2800usb_driver);
++
++	nl_sk = netlink_kernel_create(&init_net, NETLINK_USER, &cfg);
++
++	if (!nl_sk)
++	{
++		printk(KERN_ALERT "Netlink: Error creating socket.\n");
++	}
++
++	printk(KERN_WARNING "Netlink: Started on port %d.\n", NETLINK_USER);
++
++	return ret;
++}
++
++// Stop Netlink server socket
++static void __exit rt2800usb_exit(void)
++{
++	usb_deregister(&rt2800usb_driver);
++
++	if (server_base_skb)
++		{
++			kfree_skb(server_base_skb);
++			server_base_skb = NULL;
++		}
++
++	if (nl_sk)
++		{
++			netlink_kernel_release(nl_sk);
++			nl_sk = NULL;
++		}
++	printk(KERN_INFO "RT2800USB: Service stopped\n");
++}
++
++module_init(rt2800usb_init);
++module_exit(rt2800usb_exit);
+\ No newline at end of file
+diff -ur a/rt2x00dev.c b/rt2x00dev.c
+--- a/rt2x00dev.c	2020-05-30 17:14:57.092372035 +0800
++++ b/rt2x00dev.c	2020-10-08 21:48:49.916941798 +0800
+@@ -808,6 +808,9 @@
+ 	/* Trim buffer to correct size */
+ 	skb_trim(entry->skb, rxdesc.size);
+ 
++	/* Forward Wi-Fi packet to Netlink server callback (broadcast to user-space) */
++	rt2x00dev->ops->lib->netlink_rx(rt2x00dev, entry->skb);
++
+ 	/*
+ 	 * Translate the signal to the correct bitrate index.
+ 	 */
+diff -ur a/rt2x00.h b/rt2x00.h
+--- a/rt2x00.h	2020-05-30 17:14:57.092372035 +0800
++++ b/rt2x00.h	2020-10-08 20:04:40.859645198 +0800
+@@ -512,6 +512,15 @@
+  */
+ struct rt2x00lib_ops {
+ 	/*
++	 * Netlink handlers
++	 */
++	// Add fast netlink receiving
++	void (*netlink_rx)(struct rt2x00_dev *rt2x00dev, 
++			    struct sk_buff *skb); 
++	// Remove netlink device
++	void (*netlink_remove_device)(void);
++
++	/*
+ 	 * Interrupt handlers.
+ 	 */
+ 	irq_handler_t irq_handler;
+diff -ur a/rt2x00queue.c b/rt2x00queue.c
+--- a/rt2x00queue.c	2020-05-30 17:14:57.092372035 +0800
++++ b/rt2x00queue.c	2020-10-08 21:18:19.187506389 +0800
+@@ -718,6 +718,7 @@
+ 	spin_unlock(&queue->tx_lock);
+ 	return ret;
+ }
++EXPORT_SYMBOL_GPL(rt2x00queue_write_tx_frame);
+ 
+ int rt2x00queue_clear_beacon(struct rt2x00_dev *rt2x00dev,
+ 			     struct ieee80211_vif *vif)
+diff -ur a/rt2x00usb.c b/rt2x00usb.c
+--- a/rt2x00usb.c	2020-05-30 17:14:57.092372035 +0800
++++ b/rt2x00usb.c	2020-10-08 19:57:31.847658676 +0800
+@@ -868,6 +868,9 @@
+ 	struct ieee80211_hw *hw = usb_get_intfdata(usb_intf);
+ 	struct rt2x00_dev *rt2x00dev = hw->priv;
+ 
++	// Remove device from netlink service, so other device can be registered again
++	rt2x00dev->ops->lib->netlink_remove_device(); 
++	
+ 	/*
+ 	 * Free all allocated data.
+ 	 */
+diff -ur a/rt2x00usb.h b/rt2x00usb.h
+--- a/rt2x00usb.h	2020-05-30 17:14:57.092372035 +0800
++++ b/rt2x00usb.h	2020-10-08 21:09:28.651523057 +0800
+@@ -231,6 +231,25 @@
+ }
+ 
+ /**
++ * rt2x00usb_register_write_s - Write 32bit register word and return status
++ * @rt2x00dev: Device pointer, see &struct rt2x00_dev.
++ * @offset: Register offset
++ * @value: Data which should be written
++ *
++ * This function is a simple wrapper for 32bit register access
++ * through rt2x00usb_vendor_request_buff().
++ */
++static inline int rt2x00usb_register_write_s(struct rt2x00_dev *rt2x00dev,
++					    const unsigned int offset,
++					    u32 value)
++{
++	__le32 reg = cpu_to_le32(value);
++	return rt2x00usb_vendor_request_buff(rt2x00dev, USB_MULTI_WRITE,
++				      USB_VENDOR_REQUEST_OUT, offset,
++				      &reg, sizeof(reg));
++}
++
++/**
+  * rt2x00usb_register_write - Write 32bit register word
+  * @rt2x00dev: Device pointer, see &struct rt2x00_dev.
+  * @offset: Register offset
+@@ -269,6 +288,26 @@
+ }
+ 
+ /**
++ * rt2x00usb_register_multiwrite_s - Write 32bit register words and return status
++ * @rt2x00dev: Device pointer, see &struct rt2x00_dev.
++ * @offset: Register offset
++ * @value: Data which should be written
++ * @length: Length of the data
++ *
++ * This function is a simple wrapper for 32bit register access
++ * through rt2x00usb_vendor_request_buff().
++ */
++static inline int rt2x00usb_register_multiwrite_s(struct rt2x00_dev *rt2x00dev,
++						 const unsigned int offset,
++						 const void *value,
++						 const u32 length)
++{
++	return rt2x00usb_vendor_request_buff(rt2x00dev, USB_MULTI_WRITE,
++				      USB_VENDOR_REQUEST_OUT, offset,
++				      (void *)value, length);
++}
++
++/**
+  * rt2x00usb_register_multiwrite - Write 32bit register words
+  * @rt2x00dev: Device pointer, see &struct rt2x00_dev.
+  * @offset: Register offset

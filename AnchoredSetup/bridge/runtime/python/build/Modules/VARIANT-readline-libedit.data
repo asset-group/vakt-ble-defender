@@ -1,0 +1,1 @@
+readline readline-libedit.c -DUSE_LIBEDIT=1 -I/tools/deps/libedit/include -I/tools/deps/libedit/include/ncursesw -L/tools/deps/libedit/lib -ledit -lncursesw

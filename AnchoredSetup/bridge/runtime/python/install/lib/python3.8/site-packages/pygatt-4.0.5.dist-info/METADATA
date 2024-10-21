@@ -1,0 +1,391 @@
+Metadata-Version: 2.1
+Name: pygatt
+Version: 4.0.5
+Summary: Python Bluetooth LE (Low Energy) and GATT Library
+Home-page: https://github.com/peplin/pygatt
+Author: Chris Peplin <github@rhubarbtech.com>
+Author-email: github@rhubarbtech.com
+License: Apache 2.0 and MIT
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+License-File: LICENSE
+Requires-Dist: pyserial
+Requires-Dist: enum-compat
+Provides-Extra: gatttool
+Requires-Dist: pexpect ; extra == 'gatttool'
+
+pygatt - Python Module for Bluetooth LE Generic Attribute Profile (GATT).
+=========================================================================
+
+This Module allows reading and writing to GATT descriptors on devices
+such as fitness trackers, sensors, and anything implementing standard
+GATT Descriptor behavior.
+
+pygatt provides a Pythonic API by wrapping two different backends:
+
+-  BlueZ (requires Linux), using the ``gatttool`` command-line utility.
+-  Bluegiga's BGAPI, compatible with USB adapters like the BLED112.
+
+Motivation
+----------
+
+Despite the popularity of BLE, we have yet to find a good programming
+interface for it on desktop computers. Since most peripherals are
+designed to work with smartphones, this space is neglected. One
+interactive interface, BlueZ's ``gatttool``, is functional but difficult
+to use programmatically. BlueZ itself obviously works, but the interface
+leaves something to be desired and only works in Linux.
+
+Requirements
+------------
+
+-  Python 2.7.5 or greater, or Python 3.5 or greater
+
+   -  Python 2.7.3's ``struct`` library has a bug that will break PyGATT - 2.7.5
+         or greater is recommended.
+
+-  BlueZ 5.18 or greater (with gatttool) - required for the gatttool
+   backend only.
+
+   -  Tested on 5.18, 5.21, 5.35 and 5.43
+
+-  GATTToolBackend requires Linux (i.e. not Windows compatible)
+
+Installation
+------------
+
+Install ``pygatt`` with pip from PyPI:
+
+::
+
+    $ pip install pygatt
+
+The BlueZ backend is not supported by default as it requires
+``pexpect``, which can only be installed in a UNIX-based environment. If
+you wish to use that backend, install the optional dependencies with:
+
+::
+
+    $ pip install "pygatt[GATTTOOL]"
+
+Install the latest development version of ``pygatt`` with pip:
+
+::
+
+    $ pip install git+https://github.com/peplin/pygatt
+
+Documentation
+-------------
+
+The documentation for pygatt consists of:
+
+- This README
+- The code in the ``samples`` directory
+- The Python docstrings in the code itself.
+
+The ``BLEDevice`` and ``BLEBackend`` base classes are the primary interfaces for
+users of the library.
+
+Example Use
+-----------
+
+The primary API for users of this library is provided by
+``pygatt.BLEBackend`` and ``pygatt.BLEDevice``. After initializing an
+instance of the preferred backend (available implementations are found
+in ``pygatt.backends``, use the ``BLEBackend.connect`` method to connect
+to a device and get an instance of ``BLEDevice.``
+
+.. code:: python
+
+    import pygatt
+
+    # The BGAPI backend will attempt to auto-discover the serial device name of the
+    # attached BGAPI-compatible USB adapter.
+    adapter = pygatt.BGAPIBackend()
+
+    try:
+        adapter.start()
+        device = adapter.connect('01:23:45:67:89:ab')
+        value = device.char_read("a1e8f5b1-696b-4e4c-87c6-69dfe0b0093b")
+    finally:
+        adapter.stop()
+
+Note that not all backends support connecting to more than 1 device at
+at time, so calling ``BLEBackend.connect`` again may terminate existing
+connections.
+
+Here's the same example using the GATTTool backend. It's identical
+except for the initialization of the backend:
+
+.. code:: python
+
+    import pygatt
+
+    adapter = pygatt.GATTToolBackend()
+
+    try:
+        adapter.start()
+        device = adapter.connect('01:23:45:67:89:ab')
+        value = device.char_read("a1e8f5b1-696b-4e4c-87c6-69dfe0b0093b")
+    finally:
+        adapter.stop()
+
+Notifications Example
+---------------------
+
+This example uses the gatttool backend to connect to a device with a specific
+MAC address, subscribes for notifications on a characteristic, and prints the
+data returned in each notification.
+
+.. code:: python
+
+    import pygatt
+    from binascii import hexlify
+
+    adapter = pygatt.GATTToolBackend()
+
+    def handle_data(handle, value):
+        """
+        handle -- integer, characteristic read handle the data was received on
+        value -- bytearray, the data returned in the notification
+        """
+        print("Received data: %s" % hexlify(value))
+
+    try:
+        adapter.start()
+        device = adapter.connect('01:23:45:67:89:ab')
+
+        device.subscribe("a1e8f5b1-696b-4e4c-87c6-69dfe0b0093b",
+                         callback=handle_data)
+    finally:
+        adapter.stop()
+
+Debugging
+---------
+
+While debugging software using pygatt, it is often useful to see what's
+happening inside the library. You can enable debugging logging and have
+it printed to your terminal with this code:
+
+::
+
+    import pygatt
+    import logging
+
+    logging.basicConfig()
+    logging.getLogger('pygatt').setLevel(logging.DEBUG)
+
+Can't find BGAPI device in Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You may need to explicitly specify the COM port of your BGAPI-compatible
+device in windows, e.g.:
+
+::
+
+    adapter = pygatt.BGAPIBackend(serial_port='COM9')
+
+If you provide the COM port name, but still get an error such as
+``WindowsError(2, 'The system cannot find the file specified.')``, try
+changing the COM port of the device to a value under 10, e.g. ``COM9``.
+
+Authors
+-------
+
+- Jeff Rowberg @jrowberg https://github.com/jrowberg/bglib
+- Greg Albrecht @ampledata https://github.com/ampledata/pygatt
+- Christopher Peplin @peplin https://github.com/peplin/pygatt
+- Morten Kjaergaard @mkjaergaard https://github.com/mkjaergaard/pygatt
+- Michael Saunby @msaunby https://github.com/msaunby/ble-sensor-pi
+- Steven Sloboda https://github.com/sloboste
+- Ilya Sukhanov @IlyaSukhanov
+- @dcliftreaves
+- Jonathan Dan
+- Ilann Adjedj
+- Ralph Hempel
+- Rene Jacobsen
+- Marcus Georgi
+- Alexandre Barachant
+- Michel Rivas Hernandez
+- Jean Regisser
+- David Martin
+- Pieter Hooimeijer
+- Thomas Li Fredriksen
+- Markus Proeller
+- lachtanek
+- Andrea Merello
+- Richard Mitchell
+- Daniel Santos
+- Andrew Connell
+- Jakub Hrabec
+- John Schoenberger
+- Georgi Boiko
+- Jose Phillips
+
+Releasing to PyPI
+-----------------
+
+For the maintainers of the project, when you want to make a release:
+
+-  Merge all of the changes into ``master``.
+-  Update the version in ``setup.py``.
+-  Update the ``CHANGELOG.mkd``
+-  Tag the commit and push to GitHub (will need to push to a separate
+   branch of PR first since ``master`` is a protected branch).
+-  Travis CI will take care of the rest - it will build and deploy
+   tagged commits to PyPI automatically.
+
+License
+-------
+
+Copyright 2015 Stratos Inc. and Orion Labs
+
+Apache License, Version 2.0 and MIT License. See LICENSE.
+
+
+.. :changelog:
+
+Release History
+================
+
+V4.0.5
+------
+
+Same as 4.0.4. Re-released to fix PyPi upload.
+
+V4.0.4
+------
+
+* Improvement: Remove Bluetooth specification PDFs, refer to bluetooth.com to
+  avoid copyright issues.
+* Improvement: Add wait_for_response option to subscription methods
+
+V4.0.3
+------
+
+* Fix: Regression with receiving indications with GATTTOOL backend
+* Fix: Regression with subscribing to characteristics with GATTTOOL (need to use
+  writes, not commands) (#234)
+* Improvement: Don't require sudo for removing bonding (#234)
+
+V4.0.1
+------
+
+* Improvement: Wait longer for characteristics discovery with BGAPI backend (#201)
+* Fix: Protect against invalid BGAPI packets
+* Fix: Fix parsing fields from BGAPI connection status
+* Fix: Robust to non-UTF8 characters in hcitool scan results
+* Fix: Log correct connection flags from BGAPI response
+
+V4.0.0
+------
+
+* Feature: Add ``char_read_long`` for reading characteristics longer than a
+  single packet (#206, #177)
+* Feature: Add command to change MTU (GATTTool only) (#182)
+* Feature: Allow registering callbacks for device discovery events. (#176)
+* Feature: Support fetching BLE device MAC address (#150)
+* Improvement: Add better serial port error handling for BGAPI. (#162)
+* Improvement: Expand and allow overriding pexpect search buffer for gatttool
+  output to support devices with many characteristics without negatively
+  impacting performance (#209)
+* Improvement: Wait before re-opening BGAPI serial port to improve detection on
+  Windows. (#162)
+* Improvement: Add support for Python 3.7
+* Fix: Use ATT write (not command) by default for char_write
+* Fix: Wait longer for ATT write according to BlueGiga spec
+* Fix: Fix BGAPI device detection (#154)
+* Fix: Stop leaking file descriptors when erasing BLE bonds with GATTTool
+  backend (#188)
+* Fix: Typos (#173)
+* Drop official support for Python 3.4, 3.5 and 3.6.
+
+V3.2.1
+------
+
+- Improvement: Officially support Python 3.6.
+- Improvement: Permit use of non-standard characteristics in reserved range (#140)
+
+V3.2.0
+------
+
+- Fix: Reliably auto-reconnect after restarting BGAPI device. Fixes a bug in
+  first attempt at auto-reconnection, only worked in some environments. (#144)
+- Fix: Remove spurious "no handler for logger" warnings (#143)
+- Fix: Use enum-compat instead of enum34, to fix installation in Python 3.4+
+- Feature: Limit search window size for GATTTool backend, to avoid high CPU
+  usage for long running connections. (#123)
+- Feature: Add support for write commands to BGAPIBackend (#115)
+
+V3.1.1
+------
+
+- Improvement: Convert documentation to RST for better PyPI integration.
+
+V3.1.0
+------
+
+-  Fix: Support platforms without ``termios`` (Windows)
+-  Feature: Add ``char_read_handle`` to GATTTool backend.
+-  Improvement: Warn if ``hcitool`` requires a sudo authentication.
+-  Improvement: Allow BGAPI device more time to reboot for more reliable
+   discovery.
+-  Improvement: Interpret "invalid file descriptor" as a disconnect
+   event.
+-  Fix: Correctly handle service class UUIDs that aren't 16 bytes.
+-  Improvement: Support BLE devices with any UTF8 character.
+-  Improvement: Make gatttol prompt timeout configurable.
+-  Improvement: Gracefully stop ``lescan`` to avoid leaving the adapter
+   in a bad state.
+-  Improvement: Allow custom timeout for discovery on GATTTool backend.
+-  Fix: Make sure responses to char reads on BGAPI backend are from the
+   requested handle.
+-  Improvement: Raise and exception if trying to instantiate the
+   GATTTool backend in Windows.
+-  Improvement: If no BGAPI device attached, abort immediately.
+-  Fix: Use user's configured HCI device for connection and scanning in
+   GATTTool backend.
+
+V3.0.0
+------
+
+-  [API Change] The BGAPIBackend.connect method now takes the same
+   ``address_type`` argument as the GATTTool backend [BGAPI].
+-  [API Change] The ``address_type`` argument on both backends now
+   requires a value from a new enum, ``pygatt.BLEAddressType``, instead
+   of a string.
+-  Made Python 3 support a priority for both GATTTOOL and BGAPI
+   backends.
+-  Improve reliability of BGAPI backend by re-setting device for each
+   connection.
+
+V2.1.0
+------
+
+-  Added all standard GATT characteristics. [BGAPI]
+-  Move gatttool monitor to a background thread for increased
+   performance. [GATTTOOL]
+
+V2.0.1
+------
+
+-  Feature: Allow unsubscribing from notifications.
+-  Improvement: Allow more time to discover characteristics. [GATTTOOL]
+-  Improvement: Allow using gatttol backend without root. [GATTTOOL]
+-  Improvement: Standardize type of UUID so comparison always works (str
+   vs unicode)
+-  Fix: Fix packaging so the version on PyPI can be installed.
+-  Fix: Fix Python 3 compatibility.
+
+Thanks to Ilya Sukhanov and Alexey Roslyakov for the changes in this
+release!
+
+v2.0.0
+------
+
+-  New API with support for multiple BLE adapters.
+

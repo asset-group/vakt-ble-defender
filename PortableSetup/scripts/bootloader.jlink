@@ -1,0 +1,4 @@
+h
+loadbin ./vaktble_bootloader-0.7.0-32-g7210c39-dirty_s140_6.1.1.hex,0x0
+r
+q

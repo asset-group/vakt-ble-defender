@@ -1,0 +1,29 @@
+Build information:
+
+* System: Linux-3.19.0-77-generic
+* Hostname: swdev-build-OptiPlex-9020M
+* Timestamp: 2018-09-10 12:19:11 (YY-MM-DD HH:MM:SS, UTC)
+* Generator: Unix Makefiles
+* Build type: RelWithDebInfo
+* C Compiler: GNU (64-bit)
+* C++ Compiler: GNU (64-bit)
+* CMake version: 3.11.1
+* Boost version: 1.61.0
+* Boost libs: /home/swdev_build/boost/boost_1_61_0/stage/lib
+* SD API Versions: <SD_API_V2> <SD_API_V3>
+* SWIG version: 2.0.11
+* Pyhon version: 2.7.6
+* Pyhon libs: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+* Git repo: pc-ble-driver-py
+** Git revision: c32f7ed57ec26cae808ddaf1a3560a8a6b936d6f
+** Git branch: release/0.11.4
+* Git repo: pc-ble-driver
+** Git revision: 2d97262fa9940cb815778f01af9d05093558a72c
+** Git branch: HEAD
+* MD5 sums: 
+** 96d960da53cbf42739fd579c6bc8dacf  pc_ble_driver_sd_api_v2.py
+** 06ee4c4e7650df962f350e20580609ab  _pc_ble_driver_sd_api_v2.so
+** 1efcb87a049d0338067f34b3ae977e2d  libpc_ble_driver_shared_sd_api_v2.so
+** 245ec9a0c89899ff852bf01d8775192e  pc_ble_driver_sd_api_v3.py
+** 47add8f81d02f3cd7a11a8eeeb433609  _pc_ble_driver_sd_api_v3.so
+** e6e313fad872a486e8ad6b9f96101f19  libpc_ble_driver_shared_sd_api_v3.so

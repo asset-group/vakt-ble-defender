@@ -1,0 +1,16 @@
+{
+  "AccessAdress": "9A328370",
+  "ConnectionInterval": 16,
+  "WindowOffset": 1,
+  "WindowSize": 2,
+  "SlaveLatency": 0,
+  "ChannelMap": "1FFFFFFFFF",
+  "ConnectionTimeout": 100,
+  "MasterFeatureSet": "le_encryption+le_data_len_ext",
+  "DongleSerialPort": "/dev/ttyACM2",
+  "EnableFuzzing": false,
+  "EnableDuplication": false,
+  "PairingPin": "0000",
+  "MonitorSerialPort": "/dev/ttyUSB1",
+  "MonitorSerialBaud": 115200
+}

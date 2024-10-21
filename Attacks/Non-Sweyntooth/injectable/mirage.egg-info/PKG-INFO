@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: mirage
+Version: 1.2
+Summary: Mirage is an offensive framework dedicated to the security analysis of wireless communication protocols
+Home-page: https://github.com/RCayre/mirage
+Author: Romain Cayre
+Author-email: rcayre@laas.fr
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: French
+Classifier: Operating System :: Linux
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Security
+License-File: LICENSE.txt
+
+UNKNOWN
+
