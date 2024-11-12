@@ -13,7 +13,7 @@ VaktBLE introduces a non-compliant firmware patch, using a [nRF52840 DK](https:/
   <img src="AnchoredSetup/docs/overview.png" alt="overview" width="500" height="auto"/>
 </p>
 
-VaktBLE artifacts paper received the following badges in ACSAC'24:
+VaktBLE artifacts paper received the following badges in the Annual Computer Security Applications Conference (ACSAC) 2024:
 
 <div style="text-align: center;">
   <img src="AnchoredSetup/docs/code_avai.png" alt="av" style="width: 150px; height: auto; margin: 0 5px;" />
@@ -80,7 +80,7 @@ The platform is designed for two setups: an anchored setup using a PC (x86_64) a
 * nRF52840-Dongle - Malicious Central
 
 ### 1.2 Software depenencies
-The software dependencies are provided in the script *AnchoredSetup/requirements.sh* Such scripts are intended to be executed under Ubuntu 22.04. However, the main runtime dependencies are listed below:
+The software dependencies are provided in the script *AnchoredSetup/requirements.sh*. Such scripts are intended to be executed under Ubuntu 22.04. However, the main runtime dependencies are listed below:
 
 * Wireshark 4.1.0 (Included with artifact)
 * Python3 ≥ 3.8.10 (Included with artifact)
@@ -133,7 +133,7 @@ cd $HOME/vakt-ble-defender/PortableSetup
 ./firmware.sh peripheral flash
 ```
 
-In order to flash the non-compliant peripheral put the nRF52840-DK in DFU mode and run the follow commands:
+In order to flash the non-compliant peripheral, put the nRF52840-DK in DFU mode and run the follow commands:
 
 ```shell
 cd PortableSetup/
@@ -143,7 +143,7 @@ sudo chown $USER:$USER /dev/ttyACM0 # Give user permission to serial port
 ```
 
  #### Flash the **Attacker Firmware**:
-In order to launch an attack you can attach a nRF52840 Dongle and flash it as a central deivce. You need to install nrfutil tool to flash the firmware on the board. Remember to put the nRF52840 on DFU mode before flashing (reset the USB dongle while it is connected to your PC by pressing the small reset button),then you can run the following commands:
+In order to launch an attack you can attach a nRF52840 Dongle and flash it as a central device. You need to install nrfutil tool to flash the firmware on the board. Remember to put the nRF52840 in DFU mode before flashing (reset the USB dongle while it is connected to your PC by pressing the small reset button), then you can run the following commands:
 
 
 ```shell
@@ -155,7 +155,7 @@ nrfutil dfu usb-serial -p COM_PORT -pkg nRF52_driver_firmware.zip
 ./firmware.py attacker flash
 ```
 
-The scripts are functional on both Linux and Windows. All that's required is to modify the COM_PORT parameter to correspond with the nRF52840 port name. You can use dmesg -w to verify the port.
+The scripts are functional on both Linux and Windows. All that is required is to modify the COM_PORT parameter to correspond with the nRF52840 port name. You can use dmesg -w to verify the port.
 
 #### Flash the **InjectaBLE Firmware**
 
@@ -172,7 +172,7 @@ After the make command finishes, you can verify if the dongle is detected by you
 </p>
 
 #### Flash BLE Target Firmware
-The following commands can download and install the peripheral sample code in a development board with ESP32/ESP32-C3 SoC (e.g., ESP32-DevKitC, ESP-WROVER-KIT,)
+The following commands can download and install the peripheral sample code in a development board with ESP32/ESP32-C3 SoC (e.g., ESP32-DevKitC, ESP-WROVER-KIT).
 
 ```shell
 cd $HOME
@@ -227,7 +227,7 @@ cd $HOME/vaktble-ble-defender/PortableSetup/
 sudo bin/vaktble --debug-pkt-peripheral --name nimble-bleprph --channel 39
 ```
 
-Where `--debug-pkt-peripheral` enables the debug of the packets from and to the peripheral, `--name nimble-bleprph` is the name of the peripheral, and we can specify the BLE channel (i.e,. 39) with `-channel 39` argument.
+Where `--debug-pkt-peripheral` enables the debugging of the packets from and to the peripheral, `--name nimble-bleprph` is the name of the peripheral, and we can specify the BLE channel (i.e,. 39) with `-channel 39` argument.
 
 The output of the Portable setup is shown below:
 
@@ -426,9 +426,9 @@ If you use VaktBLE in your research, you can cite our paper:
 
 ```
 @inproceedings{
+  title={VaktBLE: A Benevolent Man-in-the-Middle Bridge to Guard against Malevolent BLE Connections}, 
   author={Benita, Geovani and Sestrem, Leonardo and Garbelini, Matheus E and Chattopadhyay, Sudipta and Sun, Sumei and Kurniawan, Ernest},
   booktitle={40th Annual Computer Security Applications Conference (ACSAC 2024)}, 
-  title={VaktBLE: A Benevolent Man-in-the-Middle Bridge to Guard against Malevolent BLE Connections}, 
   year={2024},
 }
 ```
