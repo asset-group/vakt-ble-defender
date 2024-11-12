@@ -68,7 +68,7 @@ VaktBLE artifacts paper received the following badges in ACSAC'24:
 ------
 
 
-## 1. 📋 
+## 1. 📋 Requirements
 
 The platform is designed for two setups: an anchored setup using a PC (x86_64) and a portable setup using an embedded Linux system (Orange Pi Zero 3 with ARM Cortex-A53).
 
@@ -101,7 +101,7 @@ VaktBLE
 └── Eval                        # Python scripts to assist in reproducing results from the VaktBLE paper
 
 ```
-## 2 🛠️ Build VaktBLE from source
+## 2. 🛠️ Build VaktBLE from source
 VaktBLE can be installed by running a series of scripts that automatically manage the installation of necessary dependencies for both VaktBLE and additional scripts used to execute BLE attacks and flash the non-compliant VaktBLE firmware. The full installation process is outlined in the steps below:
 
 ```bash
