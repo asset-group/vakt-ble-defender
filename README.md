@@ -4,10 +4,10 @@
   <img src="PortableSetup/docs/logo_animated.gif" alt="animated" width="300" height="auto"/>
 </p>
 
-VaktBLE presents an innovative framework that prevents a malicious BLE central device from establishing a direct connection with the intended peripheral. This method serves to guard it against unforeseen attack surfaces that are carried over BLE packets.
+VaktBLE presents an innovative framework that prevents a malicious BLE central device from establishing a direct connection with the intended peripheral. This method serves to guard it against unforeseen attack surfaces that are carried over BLE packets. For the details of VaktBLE methodologies, refer to the VaktBLE paper. This repository serves as a one-stop guide to use the VaktBLE tool and/or reproduce the experiments reported in the paper.
 
 
-VaktBLE introduces a non-compliant firmware patch, using a [nRF52840 DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK) and a [nRF52840 Dongle](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-Dongle) as a benevolent MitM to send/receive raw link layer packets to and from the malicious central over the air. It is necessary to flash the driver firmware to the board before starting the Python 3.8 scripts.
+VaktBLE introduces a non-compliant firmware patch, using a [nRF52840 DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK) and a [nRF52840 Dongle](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-Dongle) as a benevolent MiTM to send/receive raw link layer packets to and from the malicious central over the air. It is necessary to flash the driver firmware to the board before starting the Python 3.8 scripts.
 
 <p align="center">
   <img src="AnchoredSetup/docs/overview.png" alt="overview" width="500" height="auto"/>
