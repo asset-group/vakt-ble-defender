@@ -191,11 +191,11 @@ idf.py -p /dev/ttyUSB0 flash
 
 #### 3.1 Anchored Setup
 
-VaktBLE determines and displays in the terminal whether a specific packet matches a particular "Validation Type." Below is a list of the possible validation types, as shown in the "Validation Type" column of Table 2 in the VaktBLE paper:
+VaktBLE determines and displays in the terminal whether a specific packet matches a particular "Validation Type." Below is a list of the possible validation types, as shown in the "Validation Type" column of Table 2 in the [VaktBLE paper](https://asset-group.github.io/papers/vaktble.pdf):
 | Validation Type  | Description |
 |------------------|-------------|
 | **Valid**        | Indicates that the received packet from the central is valid and will be forwarded to the peripheral under protection (e.g., ESP32/Moto G 5S). |
-| **Malformed**    | The packet has been rejected by the Decoding or Filtering component (refer to Figure 4 in the VaktBLE paper) and will not be forwarded to the peripheral under protection. |
+| **Malformed**    | The packet has been rejected by the Decoding or Filtering component (refer to Figure 4 in the [VaktBLE paper](https://asset-group.github.io/papers/vaktble.pdf)) and will not be forwarded to the peripheral under protection. |
 | **Flooding**     | The packet has been rejected by the Filtering component and will not be forwarded to the peripheral under protection. |
 | **Out-of-Order** | The packet has been rejected by the FSM Check component and will not be forwarded to the peripheral under protection. |
 | **MIC Error**    | The packet has been rejected by the Encryption component and will not be forwarded to the peripheral under protection. |
@@ -333,7 +333,7 @@ We can launch CyRC attacks running the following commands:
 ./e6unresponsiveness_timeout_zero.py c8:c9:a3:d3:65:1e #) (E6 Unresponsiveness with Conn. Parameters
 ```
 
-The output shown below shows how the attack (E1 Legacy pairing passkey) works by displaying both the terminal output and phone display. This test was performed on the MotoG 5S, which supports legacy pairing. While E1 and E3 attacks only work on legacy pairing devices, other attacks like O1 and E6 can be used on a wider variety of devices, including ESP32, as shown in our paper's Table 2.
+The output shown below shows how the attack (E1 Legacy pairing passkey) works by displaying both the terminal output and phone display. This test was performed on the MotoG 5S, which supports legacy pairing. While E1 and E3 attacks only work on legacy pairing devices, other attacks like O1 and E6 can be used on a wider variety of devices, including ESP32, as shown in our [paper's](https://asset-group.github.io/papers/vaktble.pdf) Table 2.
 
 <p align="center">
   <img src="AnchoredSetup/docs/blediff_legacy_pairing_passkey_phone_v2.png" alt="motograndadd" width="900" height="auto"/>
@@ -383,37 +383,37 @@ An example of VaktBLE output detection and the BLE fuzzer running can be better 
   </div>
 </div>
 
-## 5. 📊 Attacks detected by VaktBLE
+## 5. ✅ Attacks detected by VaktBLE
 
 <div style="overflow-x: auto;">
 
-|  | Attack Name | Malformed/Non-compliant | Flooding | State Machine Model | Encryption | Connectivity | VaktBLE Overhead (avg) | Time to hijack the channel (avg) | Target Peripheral |
-|---|-------------|-------------------------|----------|---------------------|------------|--------------|------------------------|-----------------------------------|--------------------|
+|   | Attack Name | Malformed/Non-compliant | Flooding | State Machine Model | Encryption | Connectivity | VaktBLE Overhead (avg) | Time to hijack the channel (avg) | Target Peripheral       |
+|---|--|----|----------|-------|------------|--------|----------|--------------|--------|
 | **Sweyntooth** | CVE-2019-16336 - Link Layer Length Overflow | ✅ | | | | 10/10 | 18.3 ms | 40.3 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2019-19195 - Invalid L2cap fragment | ✅ | | | | 10/10 | 9.2 ms | 60.2 ms | ESP32-DevKitC |
-| | CVE-2019-17060 - LLID Deadlock | ✅ | | | | 10/10 | 15.9 ms | 35.3 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2019-17517 - Truncated L2CAP | ✅ | | | | 10/10 | 7.2 ms | 38.5 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2019-17518 - Silent Length Overflow | ✅ | | | | 10/10 | 12.3 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2019-17520 - Public Key Crash | | | ✅ / Legacy Pairing | | 10/10 | N/A | N/A | ESP32-Wrover-Kit-VE |
-| | CVE-2019-19193 - Invalid Connection Request | ✅ | | | | 10/10 | 8.0 ms | 60.1 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2019-19192 - Sequential ATT Deadlock | | ✅ | | | 10/10 | 6.8 ms | 50.2 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2019-19196 - Key Size Overflow | ✅ | | | | 10/10 | 10.3 ms | 30.2 ms | Moto G 3S |
-| | CVE-2019-19194 - Zero LTK Installation | | | ✅ / Legacy Pairing | | 10/10 | 10.5 ms | 40.3 ms | Moto G 3S |
-| | CVE-2020-13393 - DHCheck Skip | | | ✅ / Secure Connection | | 10/10 | 7.5 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2020-13595 - ESP32 HCI Desync | | | | ✅ | 10/10 | 8.3 ms | 50.1 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2020-10061 - Zephyr Invalid Sequence | ✅ | |  | | 10/10 | 9.0 ms | 48.8 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2020-10069 - Invalid Channel Map | ✅ | | | | 9/10 | 10.3 ms | 35.3 ms | ESP32-Wrover-Kit-VE |
-| **Non-Sweyntooth** | InjectaBLE - Hijacking the Peripheral via Central Impersonation (MitM) | _ | _ | _ | _ | 10/10 | N/A | N/A | ESP32-DevKitC |
-| | CVE-2019-9506 - BLE KNOB Variant | | | | | 10/10 | 10.3 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
-| | BLEDiff - (E1) Bypassing passkey entry in legacy pairing | | | ✅ / Legacy Pairing | | 9/10 | 7.2 ms | 32.5 ms | Moto G 3S |
-| | BLEDiff - (E3) Bypassing legacy pairing | | | ✅ / Legacy Pairing | | 10/10 | 7.2 ms | 35.5 ms | Moto G 3S |
-| | BLEDiff - (O1) Accepting key size greater than max | ✅ | | | | 10/10 | 8.9 ms | 35.7 ms | Moto G 3S |
-| | BLEDiff - (E4) Accepts DHKeyCheck equals zero | ✅ | | | | 10/10 | 7.2 ms | 38.5 ms | ESP32-Wrover-Kit-VE |
-| | BLEDiff - (E6) Unresponsiveness with ConReqIntervalZero | ✅ | | | | 10/10 | 8.7 ms | 38.5 ms | Moto G 3S |
-| | CVE-2021-3430 - CyRC: Assertion failure on repeated LL packets | | ✅ | | | 10/10 | 8.9 ms | 35.7 ms | ESP32-Wrover-Kit-VE |
-| | CVE-2021-3431 - CyRC: Assertion failure on LL_CONNECTION_PARAM_REQ | | ✅ | | | 10/10 | N/A | N/A | ESP32-Wrover-Kit-VE |
-| | CVE-2021-34333 - CyRC: Invalid channel map in CONNECT_IND results to deadlock | ✅ | | | | 10/10 | N/A | N/A | ESP32-Wrover-Kit-VE |
-| | CVE-2021-3454 - CyR CL2CAP: Truncated K-frame causes assertion failure | ✅ | | | | 10/10 | N/A | N/A | ESP32-DevKitC |
+|   | CVE-2019-19195 - Invalid L2cap fragment | ✅ | | | | 10/10 | 9.2 ms | 60.2 ms | ESP32-DevKitC |
+|   | CVE-2019-17060 - LLID Deadlock | ✅ | | | | 10/10 | 15.9 ms | 55.5 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2019-17517 - Truncated L2CAP | ✅ | | | | 10/10 | 7.2 ms | 58.5 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2019-17518 - Silent Length Overflow | ✅ | | | | 10/10 | 12.3 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2019-17520 - Public Key Crash | | | ✅ / Legacy Pairing | | 10/10 | 7.1 ms | 60.1 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2019-19193 - Invalid Connection Request | ✅ | | | | 10/10 | N.A | N.A | ESP32-Wrover-Kit-VE |
+|   | CVE-2019-19192 - Sequential ATT Deadlock | | ✅ | | | 10/10 | 12.5 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2019-19196 - Key Size Overflow | ✅ | | | | 10/10 | 6.8 ms | 50.2 ms | Moto G 3S |
+|   | CVE-2019-19194 - Zero LTK Installation | | | ✅ / Legacy Pairing | | 10/10 | 10.5 ms | 60.1 ms | Moto G 3S |
+|   | CVE-2020-13393 - DHCheck Skip | | | ✅ / Secure Connection | | 10/10 | 11.3 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2020-13595 - ESP32 HCI Desync | | | | ✅ | 10/10 | 7.5 ms | 40.8 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2020-10061 - Zephyr Invalid Sequence | ✅ | | | | 10/10 | N.A | N.A | ESP32-Wrover-Kit-VE |
+|   | CVE-2020-10069 - Invalid Channel Map | ✅ | | | | 9/10 | N.A | N.A | ESP32-Wrover-Kit-VE |
+| **Non-Sweyntooth** | InjectaBLE - Hijacking the Peripheral via Central Impersonation (MitM) | _| _|_ |_ | 10/10 | N.A | N.A | ESP32-DevKitC |
+|   | CVE-2019-9506 - BLE KNOB Variant | | | | | 10/10 | 8.2 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
+|   | BLEDiff - (E1) Bypassing passkey entry in legacy pairing | | | ✅ / Legacy Pairing | | 9/10 | 5.4 ms | 32.5 ms | Moto G 3S |
+|   | BLEDiff - (E3) Bypassing legacy pairing | | | ✅ / Legacy Pairing | | 10/10 | 7.2 ms | 40.6 ms | Moto G 3S |
+|   | BLEDiff - (O1) Accepting key size greater than max | ✅ | | | | 10/10 | 13.2 ms | 58.5 ms | Moto G 3S |
+|   | BLEDiff - (E4) Accepts DHKeyCheck equals zero | ✅ | | | | 10/10 | 8.9 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
+|   | BLEDiff - (E6) Unresponsiveness with ConReqIntervalZero | ✅ | | | | 10/10 | 15.5 ms | 62.5 ms | Moto G 3S |
+|   | CVE-2021-3430 - CyRC: Assertion failure on repeated LL packets | | ✅ | | | 10/10 | 10.9 ms | 60.3 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2021-3431 - CyRC: Assertion failure on LL_CONNECTION_PARAM_REQ | | ✅ | | | 10/10 | 11.5 ms | 60.2 ms | ESP32-Wrover-Kit-VE |
+|   | CVE-2021-34333 - CyRC: Invalid channel map in CONNECT_IND results to deadlock | ✅ | | | | 8/10 | N.A | N.A | ESP32-Wrover-Kit-VE |
+|   | CVE-2021-3454 - CyRC L2CAP: Truncated K-frame causes assertion failure | ✅ | | | | 10/10 | 8.1 ms | 46.3 ms | ESP32-DevKitC |
 
 </div>
 
