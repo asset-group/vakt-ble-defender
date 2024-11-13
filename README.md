@@ -3,11 +3,9 @@
 <p align="center">
   <img src="PortableSetup/docs/logo_animated.gif" alt="animated" width="300" height="auto"/>
 </p>
+VaktBLE presents an innovative framework that prevents a malicious BLE central device from establishing a direct connection with the intended peripheral. This method serves to guard it against unforeseen attack surfaces that are carried over BLE packets. This is possible by using a non-compliant BLE firmware using a [nRF52840 DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK) and a [nRF52840 Dongle](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-Dongle) as a benevolent BLE bridge which validates and forwards link layer packets from the central (potentially malicious) to the peripheral under protection. VaktBLE BLE defence is performed in real-time and is completely over-the-air, without requiring modification of the BLE target firmware.
 
-VaktBLE presents an innovative framework that prevents a malicious BLE central device from establishing a direct connection with the intended peripheral. This method serves to guard it against unforeseen attack surfaces that are carried over BLE packets. For the details of VaktBLE methodologies, refer to the VaktBLE paper. This repository serves as a one-stop guide to use the VaktBLE tool and/or reproduce the experiments reported in the paper.
-
-
-VaktBLE introduces a non-compliant firmware patch, using a [nRF52840 DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK) and a [nRF52840 Dongle](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-Dongle) as a benevolent MiTM to send/receive raw link layer packets to and from the malicious central over the air. It is necessary to flash the driver firmware to the board before starting the Python 3.8 scripts.
+This repository serves as a one-stop guide to use the VaktBLE tool and/or reproduce the experiments reported in the paper. For more details of VaktBLE methodologies, refer to the VaktBLE paper. 
 
 <p align="center">
   <img src="AnchoredSetup/docs/overview.png" alt="overview" width="500" height="auto"/>
@@ -49,7 +47,7 @@ VaktBLE artifacts paper received the following badges in the Annual Computer Sec
     * 4.1 [Sweyntooth Attacks](#41-sweyntooth)
 
     * 4.2 [Non-Sweyntooth Attacks](#42-non-sweyntooth-attacks)
-        
+      
       * 4.2.1 [BLEDiff](#421-injectable-attack)
 
       
@@ -70,17 +68,19 @@ VaktBLE artifacts paper received the following badges in the Annual Computer Sec
 
 ## 1. 📋 Requirements
 
+VaktBLE introduces a non-compliant firmware patch, using a [nRF52840 DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK) and a [nRF52840 Dongle](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-Dongle) as a benevolent MiTM to send/receive raw link layer packets to and from the malicious central over the air. It is necessary to flash the driver firmware to the board before starting the Python 3.8 scripts.
+
 The platform is designed for two setups: an anchored setup using a PC (x86_64) and a portable setup using an embedded Linux system (Orange Pi Zero 3 with ARM Cortex-A53).
 
 ### 1.1 Hardware dependencies
 
 * nRF52840-DK - MitM Peripheral (non-compliant)
 * nRF52840-Dongle - MitM central (non-compliant)
-* ESP32 DevKit - Vulnerable BLE target
-* nRF52840-Dongle - Malicious Central
+* ESP32 DevKit - Vulnerable BLE target (BLE target to defend)
+* nRF52840-Dongle - Malicious Central (Attacker)
 
 ### 1.2 Software depenencies
-The software dependencies are provided in the script *AnchoredSetup/requirements.sh*. Such scripts are intended to be executed under Ubuntu 22.04. However, the main runtime dependencies are listed below:
+The software dependencies are provided in the script `AnchoredSetup/requirements.sh`. Such scripts are intended to be executed under Ubuntu 22.04. However, the main runtime dependencies are listed below:
 
 * Wireshark 4.1.0 (Included with artifact)
 * Python3 ≥ 3.8.10 (Included with artifact)
@@ -157,7 +157,7 @@ nrfutil dfu usb-serial -p COM_PORT -pkg nRF52_driver_firmware.zip
 
 The scripts are functional on both Linux and Windows. All that is required is to modify the COM_PORT parameter to correspond with the nRF52840 port name. You can use dmesg -w to verify the port.
 
-#### Flash the **InjectaBLE Firmware**
+#### Flash the **InjectaBLE Firmware **(Optional)
 
 Similar to the instructions on how to flash the VaktBLE firmware, put the nRF52840-Dongle in DFU mode and run the following commands:
 
@@ -187,21 +187,21 @@ idf.py build # Finally to build and flash
 idf.py -p /dev/ttyUSB0 flash
 ```
 
-## 3. 🛡️ Deploying VaktBLE
+## 3. 🛡️ Running VaktBLE
 
 #### 3.1 Anchored Setup
 
-VaktBLE determines and displays in the terminal whether a specific packet matches a particular "Validation Type." Below is a list of the possible validation types, as shown in the "Validation Type" column of Table 2 in the [VaktBLE paper](https://asset-group.github.io/papers/vaktble.pdf):
-| Validation Type  | Description |
-|------------------|-------------|
-| **Valid**        | Indicates that the received packet from the central is valid and will be forwarded to the peripheral under protection (e.g., ESP32/Moto G 5S). |
-| **Malformed**    | The packet has been rejected by the Decoding or Filtering component (refer to Figure 4 in the [VaktBLE paper](https://asset-group.github.io/papers/vaktble.pdf)) and will not be forwarded to the peripheral under protection. |
-| **Flooding**     | The packet has been rejected by the Filtering component and will not be forwarded to the peripheral under protection. |
-| **Out-of-Order** | The packet has been rejected by the FSM Check component and will not be forwarded to the peripheral under protection. |
-| **MIC Error**    | The packet has been rejected by the Encryption component and will not be forwarded to the peripheral under protection. |
+VaktBLE displays in the terminal whether a specific packet matches a particular "Validation Type." Below is a list of the possible validation types, as shown in the "Validation Type" column of Table 2 in the [VaktBLE paper](https://asset-group.github.io/papers/vaktble.pdf):
+| Validation Type    | Description                                                  |
+| ------------------ | ------------------------------------------------------------ |
+| **✅Valid**         | Indicates that the received packet from the central is valid and shall be forwarded to the peripheral under protection (e.g., ESP32/Moto G 5S). |
+| **🚫 Malformed**    | Indicates that the packet has been rejected by the Decoding or Filtering component (c.f., **Figure 4** of VaktBLE paper). The packet will not be forwarded to the peripheral under protection. |
+| **🚫 Flooding**     | Indicates that the packet has been rejected by the Filtering component. The packet will not be forwarded to the peripheral under protection. |
+| **🚫 Out-of-Order** | Indicates that the packet has been rejected by the FSM Check component. The packet will not be forwarded to the peripheral under protection. |
+| **🚫 MIC Error**    | Indicates that the packet has been rejected by the Encryption component. The packet will not be forwarded to the peripheral under protection. |
 
 
-Once the Anchored setup is configured, we only need to place the VaktBLE MiTM bridge nearby and input the MAC address of the peripheral to defend (e.g., ESP32 DevKit). We can create the benevolent MiTM bridge as follows to test the environment:
+Once the Anchored setup is installed, we only need to place the VaktBLE MiTM bridge nearby and input the MAC address of the peripheral to defend (e.g., ESP32 DevKit). We can create the benevolent MiTM bridge as follows to test the environment:
 
 ```shell
 # Address of target peripheral to protect (ESP32DevKit)
@@ -236,7 +236,11 @@ The output of the Portable setup is shown below:
 </p>
 
 
-### 4.1 Sweyntooth Attacks
+You can watch VaktBLE Portable setup in action in the following video:
+[![VaktBLE demo](AnchoredSetup/docs/thumbnail.png)](https://www.youtube.com/watch?v=RhDDp_HExsk)
+
+
+### 4.1 Launching Sweyntooth Attacks
 
 Launching Sweyntooth attacks is done via a Python3 virtual enviroment, such enviroment can be activated as follows:
 
@@ -269,7 +273,7 @@ Once we launched both VaktBLE and an attack, the output should be similar as bel
 
 The Sweyntooth attack script link_layer_overflow.py did not succeed in its attempt because VaktBLE identified the malformed packet and immediately terminated the connection to prevent further exploitation.
 
-### 4.2 Non-Sweyntooth Attacks
+### 4.2 Launching Non-Sweyntooth Attacks
 
 #### 4.2.1 InjectaBLE Attack
 InjectaBLE enables central hijacking attacks by injecting an *LL_CONNECTION_UPDATE_IND* packet and syncing with the peripheral during connection parameter updates. For this, we used a Moto G 5S as the central and an ESP32-DevKitC as the peripheral. You can display the phone screen on Linux (tested on Ubuntu 22.04) using the **scrcpy** project as follows:
@@ -340,9 +344,9 @@ The output shown below shows how the attack (E1 Legacy pairing passkey) works by
 </p>
 
 
-### 4.3 Fuzzer 
+### 4.3 🔄 Evaluating VaktBLE against continuous attacks
 
-You can also test VaktBLE using a BLE fuzzer as follows:
+You can test robustness VaktBLE using a BLE fuzzer as follows:
 
 First, we specify the correct parameters for the target in *vakt-ble-defender/Attacks/Fuzzer/ble_central.py* at the bottom of the Python code. Specifically, update line 2319 with the target address *(slave_address)* and line 2321 with the dongle serial port from the attacker *(dongle_serial_port)*.
 
@@ -415,7 +419,6 @@ An example of VaktBLE output detection and the BLE fuzzer running can be better 
 |   | CVE-2021-34333 - CyRC: Invalid channel map in CONNECT_IND results to deadlock | ✅ | | | | 8/10 | N.A | N.A | ESP32-Wrover-Kit-VE |
 |   | CVE-2021-3454 - CyRC L2CAP: Truncated K-frame causes assertion failure | ✅ | | | | 10/10 | 8.1 ms | 46.3 ms | ESP32-DevKitC |
 
-</div>
 
 # Full Documentation
 
