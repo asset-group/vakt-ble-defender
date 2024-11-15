@@ -351,22 +351,25 @@ You can test robustness VaktBLE using a BLE fuzzer as follows:
 
 First, we specify the correct parameters for the target in *vakt-ble-defender/Attacks/Fuzzer/ble_central.py* at the bottom of the Python code. Specifically, update line 2319 with the target address *(slave_address)* and line 2321 with the dongle serial port from the attacker *(dongle_serial_port)*.
 
-```shell
-model = BLECentralMethods(states, transitions,
-master_mtu=247, # 23 default, 247 max (mtu must be 4 less than max \
-length)
-slave_address=23,
-master_address=’c8:c9:a3:d3:65:1e’,
-dongle_serial_port=’/dev/ttyACM2’,
-baudrate=115200,
-monitor_magic_string=’ESP-IDF v4.1’
-enable_fuzzing=True,
-enable_duplication=True)
-model.get_graph().draw(’bluetooth/ble_central.png’, prog=’dot’)
+```python
+model = BLECentralMethods(
+    states, transitions,
+    master_mtu=247,  # 23 default, 247 max (mtu must be 4 less than max length)
+    slave_address=23,
+    master_address='c8:c9:a3:d3:65:1e',
+    dongle_serial_port='/dev/ttyACM2',
+    baudrate=115200,
+    monitor_magic_string='ESP-IDF v4.1',
+    enable_fuzzing=True,
+    enable_duplication=True
+)
+
+model.get_graph().draw('bluetooth/ble_central.png', prog='dot')
 model.sniff()
+
 # try:
 while True:
-sleep(1000)
+    sleep(1000)
 ```
 
 Secondly we can proceed to execute the fuzzer as follows:
