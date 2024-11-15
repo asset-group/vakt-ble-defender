@@ -3,9 +3,10 @@
 <p align="center">
   <img src="PortableSetup/docs/logo_animated.gif" alt="animated" width="300" height="auto"/>
 </p>
+
 VaktBLE presents an innovative framework that prevents a malicious BLE central device from establishing a direct connection with the intended peripheral. This method serves to guard it against unforeseen attack surfaces that are carried over BLE packets. This is possible by using a non-compliant BLE firmware using a [nRF52840 DK](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-DK) and a [nRF52840 Dongle](https://www.nordicsemi.com/Products/Development-hardware/nRF52840-Dongle) as a benevolent BLE bridge which validates and forwards link layer packets from the central (potentially malicious) to the peripheral under protection. VaktBLE BLE defence is performed in real-time and is completely over-the-air, without requiring modification of the BLE target firmware.
 
-This repository serves as a one-stop guide to use the VaktBLE tool and/or reproduce the experiments reported in the paper. For more details of VaktBLE methodologies, refer to the VaktBLE paper. 
+This repository serves as a one-stop guide to use the VaktBLE tool and/or reproduce the experiments reported in the paper. For more details of VaktBLE methodologies, refer to the [VaktBLE paper](https://asset-group.github.io/papers/vaktble.pdf). 
 
 <p align="center">
   <img src="AnchoredSetup/docs/overview.png" alt="overview" width="500" height="auto"/>
@@ -36,7 +37,7 @@ VaktBLE artifacts paper received the following badges in the Annual Computer Sec
 
     * 2.1 [Flashing the Firmware](#21-flashing-the-firmware)
 
-3. [🛡️ Deploying VaktBLE](#3-️-deploying-vaktble)
+3. [🛡️ Running VaktBLE](#3-️-running-vaktble)
 
     * 3.1 [Anchored setup](#31-anchored-setup)
 
@@ -44,18 +45,17 @@ VaktBLE artifacts paper received the following badges in the Annual Computer Sec
 
 4. [☢️ Launching BLE attacks](#4-️-launching-ble-attacks)
 
-    * 4.1 [Sweyntooth Attacks](#41-sweyntooth)
+    * 4.1 [Launching Sweyntooth Attacks](#41-sweyntooth)
 
-    * 4.2 [Non-Sweyntooth Attacks](#42-non-sweyntooth-attacks)
+    * 4.2 [Launching Non-Sweyntooth Attacks](#42-non-sweyntooth-attacks)
       
-      * 4.2.1 [BLEDiff](#421-injectable-attack)
+      * 4.2.1 [InjectaBLE Attack](#421)
 
-      
-      * 4.2.2 [CyRC](#422-cyrc-attacks)
+      * 4.2.2 [CyRC Attacks](#422-cyrc-attacks)
     
-      * 4.2.3 [InjectaBLE](#423-blediff-attacks)
+      * 4.2.3 [BLEDiff Attacks](#423-blediff-attacks)
 
-    * 4.3 [Fuzzer](#43-fuzzer)
+    * 4.3 [🔄 Evaluating VaktBLE against continuous attacks](#43-fuzzer)
 
 5. [✅ Attacks detected by VaktBLE](#5--attacks-detected-by-vaktble)
 
@@ -237,6 +237,7 @@ The output of the Portable setup is shown below:
 
 
 You can watch VaktBLE Portable setup in action in the following video:
+
 [![VaktBLE demo](AnchoredSetup/docs/thumbnail.png)](https://www.youtube.com/watch?v=RhDDp_HExsk)
 
 
