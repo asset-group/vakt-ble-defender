@@ -157,7 +157,7 @@ nrfutil dfu usb-serial -p COM_PORT -pkg nRF52_driver_firmware.zip
 
 The scripts are functional on both Linux and Windows. All that is required is to modify the COM_PORT parameter to correspond with the nRF52840 port name. You can use dmesg -w to verify the port.
 
-#### Flash the **InjectaBLE Firmware **(Optional)
+#### Flash the **InjectaBLE Firmware** (Optional)
 
 Similar to the instructions on how to flash the VaktBLE firmware, put the nRF52840-Dongle in DFU mode and run the following commands:
 
