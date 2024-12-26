@@ -25,43 +25,30 @@ VaktBLE artifacts paper received the following badges in the Annual Computer Sec
 
 **Table of Contents**
 
-1. [📋 Requirements](#1--requirements)
-
-    * 1.1 [Hardware Dependencies](#11-hardware-dependencies)
-    
-    * 1.2 [Software Dependencies](#12-software-dependencies)
-
-    * 1.3 [Project Structure](#13-project-structure)
-
-2. [🛠️ Build VaktBLE from source](#2-build-vaktble-from-source)
-
-    * 2.1 [Flashing the Firmware](#21-flashing-the-firmware)
-
-3. [🛡️ Running VaktBLE](#3-️-running-vaktble)
-
-    * 3.1 [Anchored setup](#31-anchored-setup)
-
-    * 3.2 [Portable setup](#32-portable-setup)
-
-4. [☢️ Launching BLE attacks](#4-️-launching-ble-attacks)
-
-    * 4.1 [Launching Sweyntooth Attacks](#41-sweyntooth)
-
-    * 4.2 [Launching Non-Sweyntooth Attacks](#42-non-sweyntooth-attacks)
-      
-      * 4.2.1 [InjectaBLE Attack](#421)
-
-      * 4.2.2 [CyRC Attacks](#422-cyrc-attacks)
-    
-      * 4.2.3 [BLEDiff Attacks](#423-blediff-attacks)
-
-    * 4.3 [🔄 Evaluating VaktBLE against continuous attacks](#43-fuzzer)
-
-5. [✅ Attacks detected by VaktBLE](#5--attacks-detected-by-vaktble)
-
-    * 5.1 [Summary](#51-summary)
-
-6. [📝 Citing VaktBLE](#6--citingvaktble)
+- [VaktBLE](#vaktble)
+  - [1. 📋 Requirements](#1--requirements)
+    - [1.1 Hardware dependencies](#11-hardware-dependencies)
+    - [1.2 Software depenencies](#12-software-depenencies)
+    - [1.3 Project Structure](#13-project-structure)
+  - [2. 🛠️ Build VaktBLE from source](#2-️-build-vaktble-from-source)
+    - [2.1 Flashing the Firmware](#21-flashing-the-firmware)
+      - [Flash the vaktBLE Firmware:](#flash-the-vaktble-firmware)
+      - [Flash the **Attacker Firmware**:](#flash-the-attacker-firmware)
+      - [Flash the **InjectaBLE Firmware** (Optional)](#flash-the-injectable-firmware-optional)
+      - [Flash BLE Target Firmware](#flash-ble-target-firmware)
+  - [3. 🛡️ Running VaktBLE](#3-️-running-vaktble)
+      - [3.1 Anchored Setup](#31-anchored-setup)
+      - [3.1.1 Anchored Setup example](#311-anchored-setup-example)
+    - [3.2 Portable Setup](#32-portable-setup)
+    - [4.1 Launching Sweyntooth Attacks](#41-launching-sweyntooth-attacks)
+    - [4.2 Launching Non-Sweyntooth Attacks](#42-launching-non-sweyntooth-attacks)
+      - [4.2.1 InjectaBLE Attack](#421-injectable-attack)
+      - [4.2.2 CyRC Attacks](#422-cyrc-attacks)
+      - [4.2.3 BLEDiff Attacks](#423-blediff-attacks)
+    - [4.3 🔄 Evaluating VaktBLE against continuous attacks](#43--evaluating-vaktble-against-continuous-attacks)
+  - [5. ✅ Attacks detected by VaktBLE](#5--attacks-detected-by-vaktble)
+- [Full Documentation](#full-documentation)
+- [📝 Citing VaktBLE](#-citing-vaktble)
 
 ------
 
@@ -217,6 +204,12 @@ After running the above command, you would see a similar output as below:
 
 
 **Note:** VaktBLE must be running in a separate terminal during all times when launching any BLE attack.
+
+#### 3.1.1 Anchored Setup example
+
+<p align="center">
+  <img src="AnchoredSetup/docs/phy_setup.png" alt="anchored_output" width="500" height="auto"/>
+</p>
 
 ### 3.2 Portable Setup
 
